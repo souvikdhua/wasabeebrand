@@ -1396,6 +1396,100 @@ button {
   font-style: italic;
 }
 
+/* === INSTAGRAM SECTION === */
+.instagram-section {
+  background: var(--color-bg);
+  padding: 2rem 3rem 6rem 3rem;
+  border-top: 1px solid rgba(245, 240, 232, 0.05);
+}
+
+.insta-handle {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-dim);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+
+.insta-handle:hover {
+  color: var(--color-red);
+}
+
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.insta-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--color-surface);
+}
+
+.insta-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.insta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.insta-overlay span {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: translateY(10px);
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.insta-item:hover img {
+  transform: scale(1.05);
+}
+
+.insta-item:hover .insta-overlay {
+  opacity: 1;
+}
+
+.insta-item:hover .insta-overlay span {
+  transform: translateY(0);
+}
+
+.instagram-btn {
+  background: transparent;
+  border: 1px solid rgba(245, 240, 232, 0.1);
+}
+.instagram-btn:hover {
+  background: var(--color-surface);
+  border-color: rgba(245, 240, 232, 0.2);
+}
+
 .reservation {
   position: relative;
   padding: 8rem 3rem;
