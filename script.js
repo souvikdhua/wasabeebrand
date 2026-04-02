@@ -14,19 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.querySelector('.menu-overlay');
   const menuLinks = document.querySelectorAll('.menu-overlay-links a');
   
-  // Scroll detection for nav
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    
-    if (currentScroll > 80) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-  });
+  // Scroll detection logic removed so the navbar stays absolute and scrolls away
   
   // Hamburger toggle
   if (hamburger) {

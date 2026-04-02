@@ -250,10 +250,6 @@ button {
   border-bottom: 1px solid rgba(245, 240, 232, 0.05);
 }
 
-.nav.scrolled {
-  position: fixed;
-  top: 0;
-}
 
 .nav-logo {
   display: flex;
