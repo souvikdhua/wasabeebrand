@@ -1291,10 +1291,10 @@ button {
 /* === RESERVATION CTA === */
 /* === REVIEWS SECTION === */
 .reviews-section {
-  background: #ffffff;
+  background: var(--color-bg);
   padding: 2rem 0 6rem 0;
   overflow: hidden;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(245, 240, 232, 0.05);
 }
 
 .reviews-marquee-container {
@@ -1324,17 +1324,17 @@ button {
 
 .review-card {
   width: 380px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-surface);
+  border: 1px solid rgba(245, 240, 232, 0.05);
   border-radius: 8px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   text-decoration: none;
-  color: #0a0a0a;
+  color: var(--color-cream);
   transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .review-card:hover {
@@ -1375,7 +1375,7 @@ button {
 .reviewer-source {
   font-family: var(--font-body);
   font-size: 0.8rem;
-  color: #777;
+  color: var(--color-text-muted);
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -1392,7 +1392,7 @@ button {
   font-family: var(--font-body);
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #333;
+  color: var(--color-text-dim);
   font-style: italic;
 }
 
@@ -1540,14 +1540,8 @@ button {
 
 /* === ORDER ONLINE SECTION === */
 .order-section {
-  background: #ffffff;
+  background: var(--color-bg);
   padding-top: 5rem;
-}
-
-.order-section .section-label,
-.order-section .section-title,
-.order-section .section-text {
-  color: #0a0a0a;
 }
 
 .order-platforms {
@@ -1563,24 +1557,19 @@ button {
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(245, 240, 232, 0.05);
   border-radius: 8px;
-  background: #f8f8f8;
+  background: var(--color-surface);
   transition: all 0.5s var(--ease-out-expo);
   text-decoration: none;
   min-height: 180px;
 }
 
-.platform-card .platform-cta,
-.platform-card .platform-rating span {
-  color: #0a0a0a;
-}
-
 .platform-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(0, 0, 0, 0.2);
-  background: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: rgba(245, 240, 232, 0.15);
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .zomato-card:hover {
@@ -1649,6 +1638,12 @@ button {
 .google-stars {
   display: flex;
   gap: 1px;
+}
+
+.google-card .platform-rating {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
 }
 
 .platform-cta {
