@@ -214,15 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     track.innerHTML += clone;
   });
 
-  // === SCROLL PROGRESS INDICATOR ===
-  function updateScrollProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollTop / docHeight;
-    document.documentElement.style.setProperty('--scroll-progress', progress);
-  }
-  
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  // Scroll progress handled in updateBrandingScroll below
 
   // === IMAGE LAZY LOADING ===
   const lazyImages = document.querySelectorAll('img[data-src]');
@@ -301,59 +293,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  window.addEventListener('scroll', () => {
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (window.pageYOffset / totalHeight) * 100;
-    if (scrollProgress) {
-      scrollProgress.style.width = `${progress}%`;
-    }
-  });
-
   // === BRANDING SCROLL MOTION ===
+
   const heroScrollText = document.querySelector('.hero-scroll-text');
   const mainHeroTitle = document.querySelector('.hero-title');
+  
+  // Wait for hero animation to complete before allowing JS to control title
+  let heroAnimationDone = false;
+  setTimeout(() => { heroAnimationDone = true; }, 4000);
   
   function updateBrandingScroll() {
     const scrollY = window.scrollY;
     
-    // Parallax branding text (Horizontal Move)
+    // Update scroll progress bar
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollProgress && totalHeight > 0) {
+      scrollProgress.style.width = `${(scrollY / totalHeight) * 100}%`;
+    }
+    
+    // Parallax branding text: slides left as user scrolls down
     if (heroScrollText) {
-      const xOffset = scrollY * 0.4;
+      const xOffset = scrollY * 0.35;
       heroScrollText.style.transform = `translate(calc(-50% - ${xOffset}px), -55%)`;
     }
     
-    // Hero title scale and fade
-    if (mainHeroTitle) {
-      const scale = 1 + (scrollY * 0.001);
-      const opacity = 1 - (scrollY / 600);
-      
-      // We keep the initial Y translate from the reveal animation
-      mainHeroTitle.style.transform = `translateY(0) scale(${scale})`;
+    // Hero title: scale up and fade as user scrolls (only after initial reveal animation)
+    if (mainHeroTitle && heroAnimationDone) {
+      const scale = Math.min(1 + scrollY * 0.0008, 1.3);
+      const opacity = Math.max(1 - scrollY / 500, 0);
+      mainHeroTitle.style.transform = `scale(${scale})`;
       mainHeroTitle.style.opacity = opacity;
     }
   }
 
+  // Single unified scroll listener for performance
   window.addEventListener('scroll', () => {
     requestAnimationFrame(updateBrandingScroll);
   }, { passive: true });
-
-
-  // === MAGNETIC BUTTONS ===
-  const magneticItems = document.querySelectorAll('.cta-btn, .insta-item, .nav-logo');
-  
-  magneticItems.forEach(item => {
-    item.addEventListener('mousemove', (e) => {
-      const position = item.getBoundingClientRect();
-      const x = e.pageX - position.left - position.width / 2;
-      const y = e.pageY - position.top - position.height / 2 - window.scrollY;
-      
-      item.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-    });
-    
-    item.addEventListener('mouseleave', () => {
-      item.style.transform = 'translate(0, 0)';
-    });
-  });
 
 
 });

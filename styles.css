@@ -1,6 +1,6 @@
 /* ========================================
    WASABEE - Oriental Cuisine
-   Inspired by sushi-jiro.jp1
+   2026 Edition · wasabee.in
    ======================================== */
 
 /* === FONTS === */
@@ -61,6 +61,18 @@ body {
 ::-moz-selection {
   background: var(--color-red);
   color: var(--color-cream);
+}
+
+/* Noise overlay for cinematic grain texture */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
 }
 
 img {
@@ -393,8 +405,10 @@ button {
   transform-origin: left;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+/* Nav CTA button */
+.nav-cta {
+  padding: 0.6rem 1.5rem !important;
+  font-size: 0.7rem !important;
 }
 
 /* Hamburger */
@@ -677,18 +691,6 @@ button {
   will-change: transform, opacity;
 }
 
-.hero-subtitle {
-  font-family: var(--font-display);
-  font-size: clamp(0.9rem, 2vw, 1.2rem);
-  font-weight: 300;
-  letter-spacing: 0.8em;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: heroReveal 1s var(--ease-out-expo) 3s forwards;
-}
 
 
 .hero-title .char {
@@ -1196,6 +1198,7 @@ button {
   vertical-align: middle;
   position: relative;
   top: -1px;
+  transition: border-color 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo);
 }
 
 .diet-icon::after {
@@ -1204,6 +1207,7 @@ button {
   width: 50%;
   height: 50%;
   border-radius: 50%;
+  transition: background 0.35s var(--ease-out-expo);
 }
 
 .diet-icon.veg {
@@ -1241,11 +1245,12 @@ button {
   display: flex;
   align-items: center;
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-cream);
   margin-bottom: 0.3rem;
-  transition: color 0.3s;
+  transition: color 0.35s var(--ease-out-expo);
+  line-height: 1.4;
 }
 
 .menu-item.non-veg h4 {
@@ -1257,6 +1262,10 @@ button {
 }
 
 .menu-item:hover .menu-item-info h4 {
+  color: var(--color-cream);
+}
+
+.menu-item.non-veg:hover .menu-item-info h4 {
   color: #ff5252;
 }
 
@@ -2071,8 +2080,25 @@ button {
   color: var(--color-gold);
   font-weight: 600;
   letter-spacing: 0.05em;
-  display: block;
+  display: inline;
   margin-top: 0.5rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+a.phone-number:hover {
+  color: var(--color-red);
+}
+
+.phone-secondary {
+  font-size: 1.2rem !important;
+}
+
+.phone-separator {
+  font-size: 1.4rem;
+  color: var(--color-text-dim);
+  margin: 0 0.3rem;
+  vertical-align: middle;
 }
 
 .contact-block .hours-grid {
@@ -2431,6 +2457,22 @@ button {
 @media screen and (max-width: 480px) {
   .hero-title {
     font-size: 3rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-scroll-text {
+    font-size: clamp(6rem, 40vw, 10rem);
+    -webkit-text-stroke-width: 0.5px;
+  }
+
+  .hero-subtitle {
+    letter-spacing: 0.3em;
+    font-size: 0.85rem;
+  }
+
+  .hero-jp {
+    font-size: 1rem;
+    letter-spacing: 0.25em;
   }
 
   .about-stats {
@@ -2441,6 +2483,25 @@ button {
 
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+
+  .menu-categories {
+    gap: 0.4rem;
+  }
+
+  .menu-cat-btn {
+    font-size: 0.6rem;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+  }
+
+  .cta-btn {
+    font-size: 0.7rem;
+    padding: 1rem 1.8rem;
+    letter-spacing: 0.2em;
   }
 }
 
