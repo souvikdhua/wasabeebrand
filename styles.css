@@ -1398,82 +1398,50 @@ button {
   transform: translateX(5px);
 }
 
-/* === HERO ACTIONS === */
-.hero-actions-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.hero-badges-marquee-wrap {
+.hero-red-marquee {
   width: 100vw;
+  padding: 1.5rem 0;
   overflow: hidden;
-  position: relative;
-  padding: 0.5rem 0;
+  background: var(--color-red);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+}
+
+.hero-red-marquee .marquee-track {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
 }
 
-.hero-badges-track {
-  display: inline-flex;
-  gap: 1rem;
-  padding-right: 1rem;
-  animation: heroMarquee 25s linear infinite;
-}
-
-.hero-badges-marquee-wrap:hover .hero-badges-track {
+.hero-red-marquee:hover .marquee-track {
   animation-play-state: paused;
 }
 
-@keyframes heroMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.hero-badge {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.8rem;
-  background: rgba(255, 255, 255, 0.96);
-  border: none;
-  border-radius: 2px;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
+.hero-red-marquee a {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #0a0a0a;
+  color: rgba(10, 10, 10, 0.4);
+  padding: 0 2rem;
   text-transform: uppercase;
-  transition: all 0.4s var(--ease-out-expo);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
   text-decoration: none;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s;
 }
 
-.hero-badge img {
-  height: 20px;
-  width: auto;
-  object-fit: contain;
-  transition: transform 0.4s var(--ease-out-expo);
+.hero-red-marquee a.filled {
+  color: var(--color-cream);
 }
 
-.hero-badge:hover {
-  background: #fff;
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+.hero-red-marquee a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
-
-.hero-badge:hover img {
-  transform: scale(1.1);
-}
-
-/* Brand color left-border accent on hover */
-.hero-badge.google-badge { border-left: 3px solid #4285F4; }
-.hero-badge.zomato-badge { border-left: 3px solid #e23744; }
-.hero-badge.swiggy-badge { border-left: 3px solid #fc8019; }
-.hero-badge.whatsapp-badge { border-left: 3px solid #25D366; }
 
 /* === ORDER ONLINE SECTION === */
 .order-section {

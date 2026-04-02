@@ -92,8 +92,8 @@ All animations use a custom cubic-bezier `--ease-out-expo: cubic-bezier(0.16, 1,
 ### 1. `#hero` — Full Screen Hero
 - **Background**: Red Maneki-neko cat poster (Ken Burns slow zoom animation)
 - **Overlay**: Multi-stop gradient for depth
-- **Content**: Japanese Kanji subtitle → WASABEE title (character-by-character reveal) → Oriental Cuisine · Kolkata → Action badges
-- **Action Badges**: White rectangular quick-links with brand-colored left-border accents for Google Maps (4.5★), Zomato, Swiggy, WhatsApp
+- **Content**: Japanese Kanji subtitle → WASABEE title (character-by-character reveal)
+- **Action Marquee**: An edge-to-edge red ticker pinned to the bottom of the hero overlay. Features infinitely scrolling, pause-on-hover bold typography for Google Maps (4.5★), Zomato, Swiggy, WhatsApp.
 
 ### 2. `#about` — About Wasabee
 - Split grid: Brand image left, story copy right
