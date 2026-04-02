@@ -1402,12 +1402,12 @@ button {
   width: 100vw;
   padding: 1.5rem 0;
   overflow: hidden;
-  background: #000000; /* changed from red to black as requested */
+  background: #ffffff;
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 10;
-  border-top: 1px solid rgba(245, 240, 232, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .hero-red-marquee .marquee-track {
@@ -1425,7 +1425,8 @@ button {
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-weight: 700;
-  color: rgba(245, 240, 232, 0.35); /* Subtle cream for un-filled text */
+  color: transparent;
+  -webkit-text-stroke: 1px #0a0a0a;
   padding: 0 2rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -1435,12 +1436,13 @@ button {
 }
 
 .hero-red-marquee a.filled {
-  color: var(--color-cream); /* Solid cream for filled text */
+  color: #0a0a0a;
+  -webkit-text-stroke: 0;
 }
 
 .hero-red-marquee a:hover {
-  color: var(--color-red); /* Red pop on hover */
-  text-shadow: 0 0 15px rgba(198, 40, 40, 0.6);
+  color: var(--color-red);
+  -webkit-text-stroke: 0;
 }
 
 /* === ORDER ONLINE SECTION === */

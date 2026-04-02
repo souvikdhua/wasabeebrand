@@ -4,25 +4,8 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // === PRELOADER ===
-  const preloader = document.querySelector('.preloader');
-  
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      preloader.classList.add('hidden');
-      document.body.style.overflow = '';
-      initAnimations();
-    }, 2200);
-  });
-  
-  // Fallback: remove preloader after 4s max
-  setTimeout(() => {
-    if (!preloader.classList.contains('hidden')) {
-      preloader.classList.add('hidden');
-      document.body.style.overflow = '';
-      initAnimations();
-    }
-  }, 4000);
+  // Start animations
+  setTimeout(initAnimations, 100);
 
   // === CUSTOM CURSOR ===
   const cursorDot = document.querySelector('.cursor-dot');
