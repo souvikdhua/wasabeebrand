@@ -267,6 +267,48 @@ document.addEventListener('DOMContentLoaded', () => {
       `<span class="word" style="animation-delay: ${i * 0.1}s">${word}</span>`
     ).join(' ');
   });
+
+
+  // === LUXURY CURSOR & SCROLL PROGRESS ===
+  const cursorOuter = document.querySelector('.cursor-outer');
+  const cursorInner = document.querySelector('.cursor-inner');
+  const scrollProgress = document.querySelector('.scroll-progress');
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  if (cursorOuter && cursorInner) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    const updateCursor = () => {
+      const easing = 0.15;
+      cursorX += (mouseX - cursorX) * easing;
+      cursorY += (mouseY - cursorY) * easing;
+
+      cursorOuter.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+      cursorInner.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+      requestAnimationFrame(updateCursor);
+    };
+    updateCursor();
+
+    const interactables = document.querySelectorAll('a, button, .menu-item, .platform-card, .insta-item, .gallery-item');
+    interactables.forEach(el => {
+      el.addEventListener('mouseenter', () => cursorOuter.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursorOuter.classList.remove('hover'));
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (window.pageYOffset / totalHeight) * 100;
+    if (scrollProgress) {
+      scrollProgress.style.width = `${progress}%`;
+    }
+  });
+
 });
 
 // === FADE IN UP KEYFRAME (used by JS) ===
