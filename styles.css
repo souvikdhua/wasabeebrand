@@ -280,24 +280,22 @@ button {
 
 /* === NAVIGATION === */
 .nav {
-  position: fixed;
+  position: absolute;
   top: 36px;
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.5rem 3rem;
+  padding: 1rem 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #000000;
-  transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.05);
 }
 
 .nav.scrolled {
+  position: fixed;
   top: 0;
-  background: #000000;
-  padding: 1rem 3rem;
-  border-bottom: 1px solid rgba(245, 240, 232, 0.05);
 }
 
 .nav-logo {
@@ -1440,11 +1438,12 @@ button {
 .hero-red-marquee a {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;
+  color: #0a0a0a;
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2vw, 2rem);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
   font-weight: 800;
-  padding: 0 2rem;
+  padding: 0 3rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   flex-shrink: 0;
@@ -1453,18 +1452,14 @@ button {
 }
 
 .hero-red-marquee a img {
-  height: 1.25em;
+  height: 1.5em;
   width: auto;
   object-fit: contain;
 }
 
-.hero-red-marquee a.brand-wa { color: #25D366; }
-.hero-red-marquee a.brand-swiggy { color: #FC8019; }
-.hero-red-marquee a.brand-zom { color: #CB202D; }
-.hero-red-marquee a.brand-maps { color: #1a73e8; }
-
 .hero-red-marquee a:hover {
   transform: scale(1.05);
+  color: var(--color-red);
 }
 
 /* === ORDER ONLINE SECTION === */
