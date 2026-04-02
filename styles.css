@@ -1407,16 +1407,33 @@ button {
   margin-top: 2rem;
 }
 
-.hero-badges {
+.hero-badges-marquee-wrap {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5rem 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.hero-badges-track {
+  display: inline-flex;
   gap: 1rem;
-  max-width: 900px;
-  width: 100%;
+  padding-right: 1rem;
+  animation: heroMarquee 25s linear infinite;
+}
+
+.hero-badges-marquee-wrap:hover .hero-badges-track {
+  animation-play-state: paused;
+}
+
+@keyframes heroMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .hero-badge {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 1rem;
