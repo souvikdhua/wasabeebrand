@@ -408,10 +408,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (matchesSearch && matchesCategory) {
         item.style.display = 'flex';
-        item.classList.add('reveal-visible');
+        item.classList.add('visible');
       } else {
         item.style.display = 'none';
-        item.classList.remove('reveal-visible');
+        item.classList.remove('visible');
       }
     });
 
@@ -447,6 +447,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuSearch) {
     menuSearch.addEventListener('input', filterMenu);
   }
+
+  // Ensure food menu is visible on initial load
+  filterMenu();
 
   // === MENU CINEMATIC HOVER REVEAL ===
   const menuBg = document.querySelector('.menu-cinematic-bg');
