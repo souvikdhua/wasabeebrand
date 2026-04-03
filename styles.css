@@ -452,7 +452,7 @@ button {
 .hamburger span {
   width: 28px;
   height: 2px;
-  background: var(--color-brand);
+  background: var(--color-cream);
   transition: all 0.4s var(--ease-out-expo);
   transform-origin: center;
 }
