@@ -610,12 +610,16 @@ button {
   object-position: center top;
   filter: grayscale(100%) brightness(0.40) contrast(1.1);
   opacity: 0;
+  transform: scale(1) translate(0, 0);
   transition: opacity 2s var(--ease-in-out); /* Buttery smooth luxury transition */
+  animation: kenBurns 40s ease-in-out infinite alternate;
+  animation-play-state: paused;
+  backface-visibility: hidden;
 }
 
 .hero-bg img.active {
   opacity: 1;
-  animation: kenBurns 40s ease-in-out infinite alternate;
+  animation-play-state: running;
 }
 
 @keyframes heroSlideshow {
