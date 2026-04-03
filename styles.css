@@ -615,12 +615,12 @@ button {
   animation: kenBurns 40s ease-in-out infinite alternate;
   animation-play-state: paused;
   backface-visibility: hidden;
-  will-change: opacity, transform;
 }
 
 .hero-bg img.active {
   opacity: 1;
   animation-play-state: running;
+  will-change: opacity, transform;
 }
 
 @keyframes heroSlideshow {
