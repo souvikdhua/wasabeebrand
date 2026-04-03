@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Wasabee Oriental Cuisine — Authentic Japanese, Korean, Thai & Chinese dining in Kolkata. Premium sushi, ramen, dumplings and more. Order on Zomato & Swiggy.">
+  <meta name="description" content="Wasabee Oriental Cuisine: Authentic Japanese, Korean, Thai & Chinese dining in Kolkata. Premium sushi, ramen, dumplings and more. Order on Zomato & Swiggy.">
   <meta name="keywords" content="Wasabee, Oriental Cuisine, Japanese Restaurant, Sushi, Ramen, Kolkata, Kalikapur, Deshapriya Park">
   <meta property="og:title" content="Wasabee | Oriental Cuisine">
   <meta property="og:description" content="Authentic Japanese dining experience. Premium sushi, ramen, and oriental flavors in Kolkata.">
@@ -14,20 +14,34 @@
   <title>Wasabee | Oriental Cuisine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --font-display: 'Michroma', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-jp: 'Noto Serif JP', 'Noto Sans JP', sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
   <link rel="icon" type="image/svg+xml" href="images/wasabee logo .svg">
+  
+  <!-- WebGL Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
+  <!-- WebGL Background -->
+  <canvas id="webgl-canvas"></canvas>
+
   <!-- Cinematic Elements -->
-  <div class="noise-overlay"></div>
-  <div class="cursor-outer"></div>
-  <div class="cursor-inner"></div>
   <div class="scroll-progress"></div>
 
   <!-- Navigation -->
   <nav class="nav" id="navbar">
-    <a href="#" class="nav-logo"><img src="images/wasabee logo .svg" alt="Wasabee" class="nav-logo-img"></a>
+    <a href="#" class="nav-logo" aria-label="Wasabee Home">
+      <img src="images/brand identity and logo .JPG" alt="Wasabee" class="nav-logo-img" id="navLogoImg">
+    </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#menu">Menu</a></li>
@@ -62,9 +76,17 @@
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <img src="images/slide 1.jpg" alt="Wasabee Premium Sushi" class="slide slide-1">
-      <img src="images/slide 2.jpg" alt="Wasabee Oriental Dining" class="slide slide-2">
-      <img src="images/slide. 3.jpg" alt="Wasabee Authentic Dish" class="slide slide-3">
+      <img src="images/IMG_2819.jpg" alt="Wasabee Food Item" class="slide slide-1">
+      <img src="images/IMG_2820.jpg" alt="Wasabee Food Item" class="slide slide-2">
+      <img src="images/IMG_2821.jpg" alt="Wasabee Food Item" class="slide slide-3">
+      <img src="images/IMG_2822.jpg" alt="Wasabee Food Item" class="slide slide-4">
+      <img src="images/IMG_2823.jpg" alt="Wasabee Food Item" class="slide slide-5">
+      <img src="images/IMG_2824.jpg" alt="Wasabee Food Item" class="slide slide-6">
+      <img src="images/IMG_2825.jpg" alt="Wasabee Food Item" class="slide slide-7">
+      <img src="images/IMG_2826.jpg" alt="Wasabee Food Item" class="slide slide-8">
+      <img src="images/IMG_2827.jpg" alt="Wasabee Food Item" class="slide slide-9">
+      <img src="images/IMG_2828.jpg" alt="Wasabee Food Item" class="slide slide-10">
+      <img src="images/IMG_2829.jpg" alt="Wasabee Food Item" class="slide slide-11">
     </div>
     <div class="hero-overlay"></div>
 
@@ -77,11 +99,15 @@
 
     <div class="hero-content">
       <div class="hero-scroll-text">WASABEE</div>
-      <p class="hero-jp">東洋料理 · わさび</p>
-      <h1 class="hero-title">WASABEE</h1>
-      <div class="hero-divider"></div>
-      <h2 class="hero-subtitle">ORIENTAL CUISINE</h2>
-      <p class="hero-address">30, Arya Vidyalaya Road · Garfa, Kolkata 700 078</p>
+      
+      <div class="hero-logo-composition">
+        <div class="hero-jp-overlay-left">本格的</div>
+        <div class="hero-logo-inner">
+          <img src="images/brand identity and logo .JPG" alt="Wasabee Oriental Cuisine" class="hero-logo-img" id="heroLogoImg">
+          <p class="hero-address">30, Baidyapara, Sahid Nagar, Near Besides Union Bank, Arya Vidyalaya Road, Kalikapur, Kolkata</p>
+        </div>
+        <div class="hero-jp-overlay-right">手造り</div>
+      </div>
     </div>
 
     <!-- Bottom Edge Red Marquee -->
@@ -89,26 +115,23 @@
       <div class="marquee-track">
         <!-- Set 1 -->
         <a href="https://wa.me/919163764444" target="_blank" class="brand-link">ORDER ON <img src="images/whatsapp-logo.svg" alt="WhatsApp"></a>
-        <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" class="brand-link">4.5 ON <img src="images/google-maps-2020-icon.svg" alt="Google Maps"></a>
+        <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" class="brand-link">4.5 &#9733; ON <img src="images/google-maps-2020-icon.svg" alt="Google Maps"></a>
         <a href="http://zoma.to/r/22188" target="_blank" class="brand-link">ORDER ON <img src="images/zomato-1.svg" alt="Zomato"></a>
         <a href="https://www.swiggy.com/city/kolkata/wasabee-kalikapur-ruby-area-rest33209" target="_blank" class="brand-link">ORDER ON <img src="images/swiggy-1.svg" alt="Swiggy"></a>
         <!-- Set 2 -->
         <a href="https://wa.me/919163764444" target="_blank" class="brand-link">ORDER ON <img src="images/whatsapp-logo.svg" alt="WhatsApp"></a>
-        <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" class="brand-link">4.5 ON <img src="images/google-maps-2020-icon.svg" alt="Google Maps"></a>
+        <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" class="brand-link">4.5 &#9733; ON <img src="images/google-maps-2020-icon.svg" alt="Google Maps"></a>
         <a href="http://zoma.to/r/22188" target="_blank" class="brand-link">ORDER ON <img src="images/zomato-1.svg" alt="Zomato"></a>
         <a href="https://www.swiggy.com/city/kolkata/wasabee-kalikapur-ruby-area-rest33209" target="_blank" class="brand-link">ORDER ON <img src="images/swiggy-1.svg" alt="Swiggy"></a>
         <!-- Set 3 -->
         <a href="https://wa.me/919163764444" target="_blank" class="brand-link">ORDER ON <img src="images/whatsapp-logo.svg" alt="WhatsApp"></a>
-        <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" class="brand-link">4.5 ON <img src="images/google-maps-2020-icon.svg" alt="Google Maps"></a>
+        <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" class="brand-link">4.5 &#9733; ON <img src="images/google-maps-2020-icon.svg" alt="Google Maps"></a>
         <a href="http://zoma.to/r/22188" target="_blank" class="brand-link">ORDER ON <img src="images/zomato-1.svg" alt="Zomato"></a>
         <a href="https://www.swiggy.com/city/kolkata/wasabee-kalikapur-ruby-area-rest33209" target="_blank" class="brand-link">ORDER ON <img src="images/swiggy-1.svg" alt="Swiggy"></a>
       </div>
     </div>
 
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
+
   </section>
 
   <!-- Seigaiha Wave Divider -->
@@ -121,7 +144,7 @@
       <div class="about-grid">
         <div class="about-image reveal-left">
           <div class="img-reveal">
-            <img src="images/slide 1.jpg" alt="Wasabee Premium Dish" class="main-img">
+            <img src="images/doodle wasabee.PNG" alt="Wasabee Doodle Art" class="main-img">
           </div>
           <div class="accent-border"></div>
           <span class="jp-accent">和さび</span>
@@ -132,7 +155,7 @@
             <h2 class="section-title">The Art of<br><span class="accent">Oriental</span> Dining</h2>
           </div>
           <p class="section-text reveal" data-delay="0.3">
-            At Wasabee, we honor the centuries-old traditions of Japanese, Korean, Thai & Chinese cuisine while crafting something entirely new. Every dish is a canvas — from hand-rolled sushi to steaming bowls of ramen, each plate tells a story of precision, passion, and the freshest ingredients.
+            At Wasabee, we honor the centuries-old traditions of Japanese, Korean, Thai & Chinese cuisine while crafting something entirely new. Every dish is a canvas: from hand-rolled sushi to steaming bowls of ramen, each plate tells a story of precision, passion, and the freshest ingredients.
           </p>
           <p class="section-text reveal" data-delay="0.4">
             With two locations in Kolkata, at Bypass and Deshapriya Park, we bring authentic Oriental flavors 
@@ -183,7 +206,7 @@
         Every grain of rice, every slice of fish, tells the story 
         of our dedication to perfection.
       </blockquote>
-      <p class="philosophy-author">— The Wasabee Kitchen</p>
+      <p class="philosophy-author">- The Wasabee Kitchen</p>
       <p class="philosophy-jp" aria-hidden="true">一期一会</p>
     </div>
   </section>
@@ -195,6 +218,8 @@
   <!-- MENU SECTION Complete Wasabee Menu      -->
   <!-- ══════════════════════════════════════════ -->
   <section class="section menu-section" id="menu">
+    <div class="menu-cinematic-bg"></div>
+    <div class="menu-cinematic-overlay"></div>
     <div class="section-narrow">
       <div class="menu-header reveal">
         <span class="section-label">お品書き</span>
@@ -202,88 +227,513 @@
         <p class="section-text" style="max-width:100%; text-align:center; margin:0 auto;">
           From traditional Japanese sushi to fiery Korean flavors explore the full Wasabee experience.
         </p>
-        <div class="menu-categories">
-          <button class="menu-cat-btn active" data-category="all">All</button>
-          <button class="menu-cat-btn" data-category="dumplings">Dumplings</button>
-          <button class="menu-cat-btn" data-category="sushi">Japanese Sushi</button>
-          <button class="menu-cat-btn" data-category="korean-sushi">Korean Sushi</button>
-          <button class="menu-cat-btn" data-category="korean">Korean</button>
-          <button class="menu-cat-btn" data-category="japanese">Japanese</button>
-          <button class="menu-cat-btn" data-category="thai">Thai &amp; Pan Asian</button>
-          <button class="menu-cat-btn" data-category="chinese">Chinese</button>
-          <button class="menu-cat-btn" data-category="desserts">Desserts</button>
+        <div class="menu-search-wrapper reveal">
+          <div class="search-input-group">
+            <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="text" id="menu-search" placeholder="Search our flavors... (e.g. Sushi, Ramen, Gyoza)">
+          </div>
         </div>
-      </div>
 
-      <div class="menu-grid">
-        <!-- ═══ DUMPLINGS ═══ -->
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Gyoza <span class="menu-badge veg">Veg</span></h4><div class="item-jp">餃子</div><p>Traditional Japanese dumplings, steamed or pan-fried</p></div><div class="menu-item-price"><span class="currency">₹</span>275</div></div>
-        <div class="menu-item non-veg reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Gyoza <span class="menu-badge non-veg">Non Veg</span></h4><div class="item-jp">餃子</div><p>Traditional Japanese dumplings, steamed or pan-fried</p></div><div class="menu-item-price"><span class="currency">₹</span>325</div></div>
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Shoyu Gyoza <span class="menu-badge veg">Soupy</span></h4><div class="item-jp">醤油餃子</div><p>Soupy dumplings in soy broth</p></div><div class="menu-item-price"><span class="currency">₹</span>275 / 325</div></div>
-        <div class="menu-item non-veg reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Siu Mai Prawn <span class="menu-badge chef">Popular</span></h4><div class="item-jp">焼売</div><p>Open dumpling with spring onion sauce</p></div><div class="menu-item-price"><span class="currency">₹</span>325</div></div>
-        <div class="menu-item non-veg reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Siu Mai Chicken</h4><div class="item-jp">焼売</div><p>Open dumpling with spring onion sauce</p></div><div class="menu-item-price"><span class="currency">₹</span>275</div></div>
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Siu Mai Veg <span class="menu-badge veg">Veg</span></h4><div class="item-jp">焼売</div><p>Open dumpling with spring onion sauce</p></div><div class="menu-item-price"><span class="currency">₹</span>295</div></div>
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Wonton Steamed</h4><div class="item-jp">ワンタン</div><p>Veg ₹225 / Chicken ₹275 / Prawn ₹325</p></div><div class="menu-item-price"><span class="currency">₹</span>225+</div></div>
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Wonton Fried</h4><div class="item-jp">揚げワンタン</div><p>Veg ₹245 / Chicken ₹295 / Prawn ₹345</p></div><div class="menu-item-price"><span class="currency">₹</span>245+</div></div>
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Momo Steamed <span class="menu-badge veg">Veg</span></h4><div class="item-jp">モモ</div><p>Classic steamed dumplings · NV ₹155</p></div><div class="menu-item-price"><span class="currency">₹</span>125</div></div>
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Momo Pan Fried</h4><div class="item-jp">焼きモモ</div><p>Veg ₹145 / Non Veg ₹175</p></div><div class="menu-item-price"><span class="currency">₹</span>145+</div></div>
-        <div class="menu-item reveal" data-category="dumplings"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Momo Fried</h4><div class="item-jp">揚げモモ</div><p>Veg ₹165 / Non Veg ₹195</p></div><div class="menu-item-price"><span class="currency">₹</span>165+</div></div>
+        <div class="menu-navigation-container reveal">
+          <div class="menu-categories" id="menu-tabs">
+            <button class="menu-cat-btn active" data-category="all">Explore All</button>
+            <button class="menu-cat-btn" data-category="dumplings">Dumplings</button>
+            <button class="menu-cat-btn" data-category="sushi">Japanese Sushi</button>
+            <button class="menu-cat-btn" data-category="korean-sushi">Korean Sushi</button>
+            <button class="menu-cat-btn" data-category="korean">Korean Mains</button>
+            <button class="menu-cat-btn" data-category="japanese">Japanese Classics</button>
+            <button class="menu-cat-btn" data-category="thai">Thai & Pan Asian</button>
+            <button class="menu-cat-btn" data-category="chinese">Chinese</button>
+            <button class="menu-cat-btn" data-category="desserts">Desserts</button>
+          </div>
+        </div>
+
+        <div class="menu-grid" id="menu-grid">
+        <div class="menu-item reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Gyoza Veg <span class="menu-badge veg">Yaki/Mushi</span></h4>
+            <div class="item-jp">餃子</div>
+            <p>Traditional Japanese dumplings, steamed or pan-fried, served with spicy dip</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>275</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Gyoza Non-Veg <span class="menu-badge non-veg">Yaki/Mushi</span></h4>
+            <div class="item-jp">餃子</div>
+            <p>Traditional meat dumplings, steamed or pan-fried, served with spicy dip</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>325</div>
+        </div>
+        <div class="menu-item reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Shoyu Gyoza (Soupy) <span class="menu-badge veg">Veg</span></h4>
+            <div class="item-jp">醤油餃子</div>
+            <p>Dumplings served in a flavorful soy broth</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>275</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Shoyu Gyoza (Soupy) <span class="menu-badge non-veg">Non-Veg</span></h4>
+            <div class="item-jp">醤油餃子</div>
+            <p>Meat dumplings served in a flavorful soy broth</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>325</div>
+        </div>
+        <div class="menu-item reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Siu Mai Veg</h4>
+            <div class="item-jp">焼売</div>
+            <p>Open dumpling served with spring onion sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>295</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Siu Mai Chicken</h4>
+            <div class="item-jp">焼売</div>
+            <p>Open chicken dumpling with spring onion sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>275</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Siu Mai Prawn</h4>
+            <div class="item-jp">焼売</div>
+            <p>Open prawn dumpling with spring onion sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>325</div>
+        </div>
+        <div class="menu-item reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Wonton Veg</h4>
+            <div class="item-jp">ワンタン</div>
+            <p>Steamed/Fried with mushroom or hot garlic sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>225 / 245</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Wonton Chicken</h4>
+            <div class="item-jp">ワンタン</div>
+            <p>Steamed/Fried with mushroom or hot garlic sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>275 / 295</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Wonton Prawn</h4>
+            <div class="item-jp">ワンタン</div>
+            <p>Steamed/Fried with mushroom or hot garlic sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>325 / 345</div>
+        </div>
+        <div class="menu-item reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Momo Veg</h4>
+            <div class="item-jp">モモ</div>
+            <p>Steamed (125) / Pan-Fried (145) / Fried (165)</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>125+</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="dumplings">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Momo Non-Veg</h4>
+            <div class="item-jp">モモ</div>
+            <p>Steamed (155) / Pan-Fried (175) / Fried (195)</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>155+</div>
+        </div>
 
         <!-- ═══ KOREAN SUSHI ═══ -->
-        <div class="menu-item reveal" data-category="korean-sushi"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Veg Gimbap <span class="menu-badge veg">Veg</span></h4><div class="item-jp">김밥</div><p>Avocado, cheese, cucumber, carrot</p></div><div class="menu-item-price"><span class="currency">₹</span>575</div></div>
-        <div class="menu-item non-veg reveal" data-category="korean-sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Non Veg Gimbap <span class="menu-badge non-veg">NV</span></h4><div class="item-jp">김밥</div><p>Chicken, pork, tamago</p></div><div class="menu-item-price"><span class="currency">₹</span>625</div></div>
-        <div class="menu-item reveal" data-category="korean-sushi"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Veg Kimbap <span class="menu-badge veg">Veg</span></h4><div class="item-jp">キンパ</div><p>Spinach, cheese, cucumber, carrot, sesame</p></div><div class="menu-item-price"><span class="currency">₹</span>575</div></div>
-        <div class="menu-item non-veg reveal" data-category="korean-sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Non Veg Kimbap <span class="menu-badge non-veg">NV</span></h4><div class="item-jp">キンパ</div><p>Chicken, crabstick, sesame</p></div><div class="menu-item-price"><span class="currency">₹</span>625</div></div>
+        <div class="menu-item reveal" data-category="korean-sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Veg Gimbap</h4>
+            <div class="item-jp">김밥</div>
+            <p>Filled with avocado, cheese, cucumber, and carrot</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>575</div>
+        </div>
+        <div class="menu-item reveal" data-category="korean-sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Veg Kimbap</h4>
+            <div class="item-jp">김밥</div>
+            <p>Spinach, cheese, cucumber, carrot, and sesame seed</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>575</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="korean-sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Non-Veg Gimbap</h4>
+            <div class="item-jp">김밥</div>
+            <p>Filled with chicken, pork, and tamago</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>625</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="korean-sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Non-Veg Kimbap</h4>
+            <div class="item-jp">김밥</div>
+            <p>Chicken, crabstick, and sesame seed</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>625</div>
+        </div>
 
         <!-- ═══ JAPANESE SUSHI ═══ -->
-        <div class="menu-item reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Sushi Platter 16pc <span class="menu-badge veg">Veg</span></h4><div class="item-jp">寿司盛り合わせ</div><p>Premium assortment for sharing</p></div><div class="menu-item-price"><span class="currency">₹</span>1,075</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Sushi Platter 16pc <span class="menu-badge non-veg">NV</span></h4><div class="item-jp">寿司盛り合わせ</div><p>Premium assortment for sharing</p></div><div class="menu-item-price"><span class="currency">₹</span>1,395</div></div>
-        <div class="menu-item reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Mixed Uramaki 12pc <span class="menu-badge chef">Popular</span></h4><div class="item-jp">ミックス裏巻き</div><p>3 different types · Veg ₹525 / NV ₹975</p></div><div class="menu-item-price"><span class="currency">₹</span>525+</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>California Uramaki 8pc</h4><div class="item-jp">カリフォルニア裏巻き</div><p>Cucumber, avocado &amp; crabstick</p></div><div class="menu-item-price"><span class="currency">₹</span>775</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Buta No Tempura Uramaki</h4><div class="item-jp">豚天ぷら裏巻き</div><p>Crisp pork fried in tempura</p></div><div class="menu-item-price"><span class="currency">₹</span>625</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Chicken Teriyaki Uramaki <span class="menu-badge chef">Chef's Pick</span></h4><div class="item-jp">チキン照り焼き裏巻き</div><p>Glazed in soy, mirin &amp; teriyaki</p></div><div class="menu-item-price"><span class="currency">₹</span>575</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Tamaki Sushi</h4><div class="item-jp">手巻き寿司</div><p>Carrot, tofu, smoked salmon</p></div><div class="menu-item-price"><span class="currency">₹</span>1,025</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Futomaki</h4><div class="item-jp">太巻き</div><p>Tamago &amp; smoked salmon</p></div><div class="menu-item-price"><span class="currency">₹</span>875</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Philadelphia Sushi</h4><div class="item-jp">フィラデルフィア寿司</div><p>Cream cheese &amp; smoked salmon</p></div><div class="menu-item-price"><span class="currency">₹</span>1,025</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Tempura Sushi Ebi <span class="menu-badge non-veg">Prawn</span></h4><div class="item-jp">天ぷら寿司</div><p>Crispy prawn tempura roll</p></div><div class="menu-item-price"><span class="currency">₹</span>875</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Tempura Sushi Tori</h4><div class="item-jp">天ぷら寿司</div><p>Chicken tempura roll</p></div><div class="menu-item-price"><span class="currency">₹</span>575</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Yakitori Sushi</h4><div class="item-jp">焼き鳥寿司</div><p>Smoked chicken roll</p></div><div class="menu-item-price"><span class="currency">₹</span>575</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Spicy Seabass Sushi <span class="menu-badge chef">Chef's Pick</span></h4><div class="item-jp">シーバス寿司</div><p>Premium spicy seabass roll</p></div><div class="menu-item-price"><span class="currency">₹</span>695</div></div>
-        <div class="menu-item reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Nigiri Cheese 4pc <span class="menu-badge veg">Veg</span></h4><div class="item-jp">チーズ握り</div><p>Hand-pressed cheese nigiri</p></div><div class="menu-item-price"><span class="currency">₹</span>325</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Nigiri Crabstick 4pc</h4><div class="item-jp">カニカマ握り</div><p>Hand-pressed crabstick nigiri</p></div><div class="menu-item-price"><span class="currency">₹</span>375</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Nigiri Squid 4pc</h4><div class="item-jp">イカ握り</div><p>Hand-pressed squid nigiri</p></div><div class="menu-item-price"><span class="currency">₹</span>475</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Nigiri Salmon 4pc <span class="menu-badge chef">Premium</span></h4><div class="item-jp">サーモン握り</div><p>Hand-pressed salmon nigiri</p></div><div class="menu-item-price"><span class="currency">₹</span>675</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Sashimi Crabstick 4pc</h4><div class="item-jp">カニカマ刺身</div><p>Fresh sliced crabstick</p></div><div class="menu-item-price"><span class="currency">₹</span>475</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Sashimi Squid 4pc</h4><div class="item-jp">イカ刺身</div><p>Fresh sliced squid</p></div><div class="menu-item-price"><span class="currency">₹</span>975</div></div>
-        <div class="menu-item non-veg reveal" data-category="sushi"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Sashimi Salmon 4pc <span class="menu-badge chef">Premium</span></h4><div class="item-jp">サーモン刺身</div><p>Fresh sliced Norwegian salmon</p></div><div class="menu-item-price"><span class="currency">₹</span>1,395</div></div>
+        <div class="menu-item reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Veg Platter 16pc <span class="menu-badge veg">Combo</span></h4>
+            <div class="item-jp">寿司盛り合わせ</div>
+            <p>Combination of Maki and Uramaki sushi (4 different types)</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>1075</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Non-Veg Platter 16pc <span class="menu-badge non-veg">Combo</span></h4>
+            <div class="item-jp">寿司盛り合わせ</div>
+            <p>Combination of Maki and Uramaki sushi (4 different types)</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>1395</div>
+        </div>
+        <div class="menu-item reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Mixed Uramaki 12pc <span class="menu-badge veg">Veg</span></h4>
+            <div class="item-jp">ミックス裏巻き</div>
+            <p>Mixed 12 pieces with 3 different types of veg sushi</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>525</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Mixed Uramaki 12pc <span class="menu-badge non-veg">NV</span></h4>
+            <div class="item-jp">ミックス裏巻き</div>
+            <p>Mixed 12 pieces with 3 different types of non-veg sushi</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>975</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>California Uramaki 8pc</h4>
+            <div class="item-jp">カリフォルニア裏巻き</div>
+            <p>Filled with cucumber, avocado, and crabstick</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>775</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Buta No Tempura Uramaki 8pc</h4>
+            <div class="item-jp">豚天ぷら裏巻き</div>
+            <p>Filled with crisp pork fried in tempura</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>625</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Chicken Teriyaki Uramaki 8pc</h4>
+            <div class="item-jp">チキン照り焼き裏巻き</div>
+            <p>Meat glazed in soy, mirin, and teriyaki sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>575</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Nigiri Sushi Roll Style 8pc</h4>
+            <div class="item-jp">握り寿司</div>
+            <p>Filled with smoked salmon, crabstick, and cucumber</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>1025</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Futomaki 8pc</h4>
+            <div class="item-jp">太巻き</div>
+            <p>Large roll filled with tamago and smoked salmon</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>875</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Philadelphia Sushi 8pc</h4>
+            <div class="item-jp">フィラデルフィア寿司</div>
+            <p>Prepared with cream cheese and smoked salmon</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>1025</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Tempura Sushi Ebi 8pc</h4>
+            <div class="item-jp">天ぷら寿司</div>
+            <p>Filled with crispy prawn fried in tempura flour</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>875</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Spicy Seabass Sushi 8pc <span class="menu-badge non-veg">Spicy</span></h4>
+            <div class="item-jp">シーバス寿司</div>
+            <p>Filled with smoked seabass in spicy glaze</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>695</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Nigiri Salmon 4pc <span class="menu-badge chef">Premium</span></h4>
+            <div class="item-jp">サーモン握り</div>
+            <p>Squeezed vinegared rice balls topped with salmon</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>675</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="sushi">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Sashimi Salmon 4pc <span class="menu-badge chef">Premium</span></h4>
+            <div class="item-jp">サーモン刺身</div>
+            <p>Fresh Norwegian salmon sliced into thin pieces</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>1395</div>
+        </div>
 
         <!-- ═══ KOREAN MAINS ═══ -->
-        <div class="menu-item non-veg reveal" data-category="korean"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Dak Gui <span class="menu-badge non-veg">Spicy</span></h4><div class="item-jp">닭구이</div><p>Spicy grilled chicken</p></div><div class="menu-item-price"><span class="currency">₹</span>345</div></div>
-        <div class="menu-item non-veg reveal" data-category="korean"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Dakgangjeong <span class="menu-badge chef">Popular</span></h4><div class="item-jp">닭강정</div><p>Sweet &amp; spicy glazed wings</p></div><div class="menu-item-price"><span class="currency">₹</span>395</div></div>
-        <div class="menu-item non-veg reveal" data-category="korean"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Dwaejigogi Bokkeum</h4><div class="item-jp">돼지고기볶음</div><p>Spicy stir-fried pork</p></div><div class="menu-item-price"><span class="currency">₹</span>425</div></div>
-        <div class="menu-item non-veg reveal" data-category="korean"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Bokkeumbap</h4><div class="item-jp">볶음밥</div><p>Spicy fried rice · Egg ₹325 / Chicken ₹345 / Pork ₹375 / Seafood ₹475</p></div><div class="menu-item-price"><span class="currency">₹</span>325+</div></div>
-        <div class="menu-item non-veg reveal" data-category="korean"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Jajangmyeon <span class="menu-badge chef">Signature</span></h4><div class="item-jp">자장면</div><p>Black bean noodles · Chicken ₹375 / Pork ₹445 / Mixed ₹475</p></div><div class="menu-item-price"><span class="currency">₹</span>375+</div></div>
+        <div class="menu-item non-veg reveal" data-category="korean">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Dak Gui <span class="menu-badge non-veg">Spicy</span></h4>
+            <div class="item-jp">닭구이</div>
+            <p>Hot and spicy grilled chicken</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>345</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="korean">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Dakgangjeong <span class="menu-badge chef">Popular</span></h4>
+            <div class="item-jp">닭강정</div>
+            <p>Crispy sweet and spicy fried chicken wings</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>395</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="korean">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Bulgogi Chicken</h4>
+            <div class="item-jp">불고기</div>
+            <p>Sweet and savoury pan-fried chicken</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>345</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="korean">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Dwaejigogi Bokkeum <span class="menu-badge non-veg">Pork</span></h4>
+            <div class="item-jp">돼지고기 볶음</div>
+            <p>Spicy stir-fried pork</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>425</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="korean">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Korean Bokkeumbap <span class="menu-badge non-veg">Mixed</span></h4>
+            <div class="item-jp">볶음밥</div>
+            <p>Spicy fried rice topped with poached egg</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>395</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="korean">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Jajangmyeon <span class="menu-badge non-veg">Pork</span></h4>
+            <div class="item-jp">자장면</div>
+            <p>Wheat noodles tossed in black bean sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>445</div>
+        </div>
 
-        <!-- ═══ JAPANESE CLASSICS ═══ -->
-        <div class="menu-item reveal" data-category="japanese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Miso Soup <span class="menu-badge veg">Veg</span></h4><div class="item-jp">味噌汁</div><p>Traditional · Pork ₹245 / Seafood ₹295</p></div><div class="menu-item-price"><span class="currency">₹</span>175</div></div>
-        <div class="menu-item reveal" data-category="japanese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Miso Ramen <span class="menu-badge chef">Signature</span></h4><div class="item-jp">味噌ラーメン</div><p>Veg ₹325 / Chicken ₹375</p></div><div class="menu-item-price"><span class="currency">₹</span>325+</div></div>
-        <div class="menu-item non-veg reveal" data-category="japanese"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Tonkotsu Ramen <span class="menu-badge chef">Signature</span></h4><div class="item-jp">豚骨ラーメン</div><p>Rich pork bone broth ramen</p></div><div class="menu-item-price"><span class="currency">₹</span>375</div></div>
-        <div class="menu-item reveal" data-category="japanese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Chahan Rice</h4><div class="item-jp">チャーハン</div><p>Veg ₹345 / Chicken ₹375 / Mixed ₹395</p></div><div class="menu-item-price"><span class="currency">₹</span>345+</div></div>
-        <div class="menu-item non-veg reveal" data-category="japanese"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Omu Rice</h4><div class="item-jp">オムライス</div><p>Chicken ₹345 / Seafood ₹395</p></div><div class="menu-item-price"><span class="currency">₹</span>345+</div></div>
-        <div class="menu-item reveal" data-category="japanese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Yaki Udon/Soba <span class="menu-badge veg">Veg</span></h4><div class="item-jp">焼きうどん</div><p>Stir-fried noodles · Chicken ₹425 / Seafood ₹525</p></div><div class="menu-item-price"><span class="currency">₹</span>345</div></div>
-        <div class="menu-item reveal" data-category="japanese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Japanese Golden Curry <span class="menu-badge chef">Must Try</span></h4><div class="item-jp">ゴールデンカレー</div><p>With rice · Veg ₹425 / Chicken ₹525 / Prawn ₹695</p></div><div class="menu-item-price"><span class="currency">₹</span>425+</div></div>
+        <!-- ═══ JAPANESE MAINS ═══ -->
+        <div class="menu-item non-veg reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Japanese Teriyaki Chicken</h4>
+            <div class="item-jp">テリヤキチキン</div>
+            <p>Sweet, savoury and tangy appetizer glazed in soy & mirin</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>395</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Kushiyaki Pork</h4>
+            <div class="item-jp">串焼き</div>
+            <p>Skewered pork meat, tossed and grilled</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>425</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Tempura Prawn 5pc</h4>
+            <div class="item-jp">海老の天ぷら</div>
+            <p>Fried in crisp tempura batter with sweet chilli sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>545</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Panko Fish Bhetki</h4>
+            <div class="item-jp">魚のパン粉焼き</div>
+            <p>Fried in Japanese breadcrumbs, served with mayo</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>575</div>
+        </div>
+        <div class="menu-item reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Chahan Rice Veg</h4>
+            <div class="item-jp">チャーハン</div>
+            <p>Stir-fried rice wok-tossed with seasonings</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>345</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Yaki Udon Chicken <span class="menu-badge non-veg">NV</span></h4>
+            <div class="item-jp">焼きうどん</div>
+            <p>Stir-fried wheat noodles with seasonings</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>425</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Tonkotsu Ramen <span class="menu-badge non-veg">Pork</span></h4>
+            <div class="item-jp">豚骨ラーメン</div>
+            <p>Noodle soup topped with boiled egg and nori (Pork)</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>375</div>
+        </div>
+        <div class="menu-item reveal" data-category="japanese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Japanese Golden Curry <span class="menu-badge veg">Veg</span></h4>
+            <div class="item-jp">ゴールデンカレー</div>
+            <p>Traditional mild curry served with steamed rice</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>425</div>
+        </div>
 
-        <!-- ═══ THAI & PAN ASIAN ═══ -->
-        <div class="menu-item reveal" data-category="thai"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Tom Yum Soup <span class="menu-badge chef">Popular</span></h4><div class="item-jp">トムヤム</div><p>Veg ₹175 / Chicken ₹225 / Seafood ₹295</p></div><div class="menu-item-price"><span class="currency">₹</span>175+</div></div>
-        <div class="menu-item reveal" data-category="thai"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Pad Thai <span class="menu-badge veg">Veg</span></h4><div class="item-jp">パッタイ</div><p>Thai stir-fried noodles · Chicken ₹325 / Seafood ₹395</p></div><div class="menu-item-price"><span class="currency">₹</span>195</div></div>
-        <div class="menu-item non-veg reveal" data-category="thai"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Nasi Goreng</h4><div class="item-jp">ナシゴレン</div><p>Indonesian fried rice · Chicken ₹325 / Seafood ₹425</p></div><div class="menu-item-price"><span class="currency">₹</span>325+</div></div>
-        <div class="menu-item reveal" data-category="thai"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Thai Red/Green Curry <span class="menu-badge chef">Must Try</span></h4><div class="item-jp">タイカレー</div><p>Veg ₹345 / Chicken ₹425 / Bhetki ₹625</p></div><div class="menu-item-price"><span class="currency">₹</span>345+</div></div>
+        <!-- ═══ PAN ASIAN FAVORITES ═══ -->
+        <div class="menu-item non-veg reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Chicken Satay 6pc <span class="menu-badge non-veg">Peanut Sauce</span></h4>
+            <p>Skewers served with peanut and chili sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>325</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Char Siu Pork</h4>
+            <p>Roasted pork in savory BBQ sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>375</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Nasi Goreng <span class="menu-badge chef">Popular</span></h4>
+            <p>Indonesian fried rice · Chicken (325) / Seafood (425)</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>325+</div>
+        </div>
+        <div class="menu-item reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Mee Goreng Veg</h4>
+            <p>Traditional spicy stir-fried thin noodles</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>175</div>
+        </div>
 
-        <!-- ═══ CHINESE ═══ -->
-        <div class="menu-item reveal" data-category="chinese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Wasabee Special Soup <span class="menu-badge chef">House Special</span></h4><p>Veg ₹145 / Non Veg ₹275</p></div><div class="menu-item-price"><span class="currency">₹</span>145+</div></div>
-        <div class="menu-item reveal" data-category="chinese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Hakka Noodles <span class="menu-badge veg">Veg</span></h4><p>Chicken ₹225 / Seafood ₹345</p></div><div class="menu-item-price"><span class="currency">₹</span>145</div></div>
-        <div class="menu-item reveal" data-category="chinese"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Veg Manchurian <span class="menu-badge veg">Veg</span></h4><p>Crispy vegetable in tangy sauce</p></div><div class="menu-item-price"><span class="currency">₹</span>225</div></div>
-        <div class="menu-item non-veg reveal" data-category="chinese"><div class="menu-item-info"><h4><span class="diet-icon non-veg"></span>Drums of Heaven <span class="menu-badge non-veg">Popular</span></h4><p>Crispy spiced chicken drumettes</p></div><div class="menu-item-price"><span class="currency">₹</span>395</div></div>
+        <!-- ═══ THAI SPECIALS ═══ -->
+        <div class="menu-item reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Tom Yum Soup Veg</h4>
+            <div class="item-jp">トムヤム</div>
+            <p>Traditional Thai hot and sour soup</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>175</div>
+        </div>
+        <div class="menu-item reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Pad Thai Veg <span class="menu-badge chef">Popular</span></h4>
+            <div class="item-jp">パッタイ</div>
+            <p>Traditional stir-fried rice noodles with peanuts</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>195</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Pad Prik Khing Chicken</h4>
+            <div class="item-jp">パップリック・キン</div>
+            <p>Spicy stir-fry with spicy red curry paste</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>395</div>
+        </div>
+        <div class="menu-item reveal" data-category="thai">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Thai Green Curry Veg</h4>
+            <div class="item-jp">グリーンカレー</div>
+            <p>Creamy coconut milk curry with aromatic herbs</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>345</div>
+        </div>
+
+        <!-- ═══ CHINESE FAVORITES ═══ -->
+        <div class="menu-item reveal" data-category="chinese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Wasabee Special Soup Veg <span class="menu-badge chef">Signature</span></h4>
+            <p>House special clear broth with exotic greens</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>145</div>
+        </div>
+        <div class="menu-item non-veg reveal" data-category="chinese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon non-veg"></span>Drums of Heaven 6pc</h4>
+            <p>Crispy chicken wingettes tossed in spicy sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>395</div>
+        </div>
+        <div class="menu-item reveal" data-category="chinese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Hakka Noodles Veg</h4>
+            <p>Classic street-style stir-fried thin noodles</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>145</div>
+        </div>
+        <div class="menu-item reveal" data-category="chinese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Burnt Garlic Fried Rice Veg</h4>
+            <p>Aromatic rice tossed with golden fried garlic</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>175</div>
+        </div>
+        <div class="menu-item reveal" data-category="chinese">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Veg Manchurian Gravy</h4>
+            <p>Fried vegetable balls in tangy soy garlic sauce</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>225</div>
+        </div>
+
+        <!-- ═══ DESSERTS ═══ -->
+        <div class="menu-item reveal" data-category="desserts">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Caramel Pudding</h4>
+            <div class="item-jp">プリン</div>
+            <p>Silky Japanese-style custard with caramel glaze</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>125</div>
+        </div>
+        <div class="menu-item reveal" data-category="desserts">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Darsaan</h4>
+            <p>Honey-glazed crispy noodles with sesame</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>125</div>
+        </div>
+        <div class="menu-item reveal" data-category="desserts">
+          <div class="menu-item-info">
+            <h4><span class="diet-icon veg"></span>Hot Brownie with Ice Cream</h4>
+            <p>Warm chocolate brownie served with vanilla cream</p>
+          </div>
+          <div class="menu-item-price"><span class="currency">₹</span>175</div>
+        </div>>Popular</span></h4><p>Crispy spiced chicken drumettes</p></div><div class="menu-item-price"><span class="currency">₹</span>395</div></div>
 
         <!-- ═══ DESSERTS ═══ -->
         <div class="menu-item reveal" data-category="desserts"><div class="menu-item-info"><h4><span class="diet-icon veg"></span>Caramel Pudding <span class="menu-badge veg">Veg</span></h4><div class="item-jp">プリン</div><p>Silky Japanese-style caramel pudding</p></div><div class="menu-item-price"><span class="currency">₹</span>125</div></div>
@@ -481,19 +931,19 @@
       <div class="insta-grid reveal" data-delay="0.2">
         <a href="https://www.instagram.com/wasabeekolkata/" target="_blank" class="insta-item">
           <img src="images/slide 1.jpg" alt="Instagram Post">
-          <div class="insta-overlay"><span>Instagram</span></div>
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" width="32" height="32" fill="#FAF7F2"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
         </a>
         <a href="https://www.instagram.com/wasabeekolkata/" target="_blank" class="insta-item">
           <img src="images/slide 2.jpg" alt="Instagram Post">
-          <div class="insta-overlay"><span>Instagram</span></div>
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" width="32" height="32" fill="#FAF7F2"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
         </a>
         <a href="https://www.instagram.com/wasabeekolkata/" target="_blank" class="insta-item">
           <img src="images/slide. 3.jpg" alt="Instagram Post">
-          <div class="insta-overlay"><span>Instagram</span></div>
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" width="32" height="32" fill="#FAF7F2"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
         </a>
         <a href="https://www.instagram.com/wasabeekolkata/" target="_blank" class="insta-item">
           <img src="images/slide 2.jpg" alt="Instagram Post">
-          <div class="insta-overlay"><span>Instagram</span></div>
+          <div class="insta-overlay"><svg viewBox="0 0 24 24" width="32" height="32" fill="#FAF7F2"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
         </a>
       </div>
       <div class="reveal insta-actions">
@@ -514,7 +964,7 @@
       <span class="section-label">ご予約</span>
       <h2 class="section-title">Reserve Your <span class="accent">Table</span></h2>
       <p class="section-text">Join us for an unforgettable journey through the flavors of Asia. Book your table today.</p>
-      <p class="reservation-jp-proverb" aria-hidden="true">「おもてなし」 — the spirit of selfless hospitality</p>
+      <p class="reservation-jp-proverb" aria-hidden="true">「おもてなし」: the spirit of selfless hospitality</p>
       <a href="tel:+919163764444" class="cta-btn">Make a Reservation <svg viewBox="0 0 24 24"><path d="M5 12H19M19 12L12 5M19 12L12 19"/></svg></a>
     </div>
   </section>
@@ -575,8 +1025,7 @@
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-logo">
-        <div class="logo-text">WAS<span>A</span>BEE</div>
-        <div class="logo-tagline">Oriental Cuisine · wasabee.in</div>
+        <img src="images/brand identity and logo .JPG" alt="Wasabee Logo" style="width:200px; max-width:100%; height:auto; margin-bottom: 1rem; border-radius: 2px;" class="footer-logo-img">
       </div>
       <div class="footer-nav">
         <div class="footer-nav-col"><h5>Explore</h5><ul><li><a href="#about">About</a></li><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#features">Experience</a></li></ul></div>

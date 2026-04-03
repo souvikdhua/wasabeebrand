@@ -7,6 +7,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // Start animations
   setTimeout(initAnimations, 100);
 
+  // === THEME TOGGLE ===
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('wasabeeTheme') || 'light';
+  
+  const navLogoImg = document.getElementById('navLogoImg');
+  const heroLogoImg = document.getElementById('heroLogoImg');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (navLogoImg) navLogoImg.src = 'images/brand identity and logo .JPG';
+      if (heroLogoImg) heroLogoImg.src = 'images/brand identity and logo .JPG';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (navLogoImg) navLogoImg.src = 'images/brand identity and logo .JPG';
+      if (heroLogoImg) heroLogoImg.src = 'images/brand identity and logo .JPG';
+    }
+  }
+
+  // Apply on load
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      localStorage.setItem('wasabeeTheme', newTheme);
+      applyTheme(newTheme);
+    });
+  }
+
 
   // === NAVIGATION ===
   const nav = document.querySelector('.nav');
@@ -314,46 +346,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // === LUXURY CURSOR & SCROLL PROGRESS ===
-  const cursorOuter = document.querySelector('.cursor-outer');
-  const cursorInner = document.querySelector('.cursor-inner');
-  const scrollProgress = document.querySelector('.scroll-progress');
-  let mouseX = 0, mouseY = 0;
-  let cursorX = 0, cursorY = 0;
+  // === HERO BACKGROUND SLIDER (JS CONTROLLED) ===
+  const heroSlides = document.querySelectorAll('#hero .hero-bg img');
+  let currentSlide = 0;
+  
+  function nextSlide() {
+    if (heroSlides.length === 0) return;
+    
+    heroSlides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    heroSlides[currentSlide].classList.add('active');
+  }
 
-  if (cursorOuter && cursorInner) {
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    const updateCursor = () => {
-      const easing = 0.15;
-      cursorX += (mouseX - cursorX) * easing;
-      cursorY += (mouseY - cursorY) * easing;
-
-      cursorOuter.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
-      cursorInner.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-
-      requestAnimationFrame(updateCursor);
-    };
-    updateCursor();
-
-    const interactables = document.querySelectorAll('a, button, .menu-item, .platform-card, .insta-item, .gallery-item');
-    interactables.forEach(el => {
-      el.addEventListener('mouseenter', () => cursorOuter.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursorOuter.classList.remove('hover'));
-    });
+  if (heroSlides.length > 0) {
+    heroSlides[0].classList.add('active'); // First image active
+    setInterval(nextSlide, 5000); // Luxury 5s interval for food photography
   }
 
   // === BRANDING SCROLL MOTION ===
-
   const heroScrollText = document.querySelector('.hero-scroll-text');
-  const mainHeroTitle = document.querySelector('.hero-title');
-  
-  // Wait for hero animation to complete before allowing JS to control title
-  let heroAnimationDone = false;
-  setTimeout(() => { heroAnimationDone = true; }, 4000);
+  const scrollProgress = document.querySelector('.scroll-progress');
   
   function updateBrandingScroll() {
     const scrollY = window.scrollY;
@@ -369,21 +381,135 @@ document.addEventListener('DOMContentLoaded', () => {
       const xOffset = scrollY * 0.35;
       heroScrollText.style.transform = `translate(calc(-50% - ${xOffset}px), -55%)`;
     }
-    
-    // Hero title: scale up and fade as user scrolls (only after initial reveal animation)
-    if (mainHeroTitle && heroAnimationDone) {
-      const scale = Math.min(1 + scrollY * 0.0008, 1.3);
-      const opacity = Math.max(1 - scrollY / 500, 0);
-      mainHeroTitle.style.transform = `scale(${scale})`;
-      mainHeroTitle.style.opacity = opacity;
-    }
   }
 
-  // Single unified scroll listener for performance
   window.addEventListener('scroll', () => {
     requestAnimationFrame(updateBrandingScroll);
   }, { passive: true });
 
+
+  // === ADVANCED MENU SYSTEM (TABS & SEARCH) ===
+  const menuSearch = document.getElementById('menu-search');
+  const menuTabs = document.querySelectorAll('.menu-cat-btn');
+  const menuGrid = document.querySelector('.menu-grid');
+  const allMenuItems = document.querySelectorAll('.menu-item');
+
+  function filterMenu() {
+    const searchTerm = menuSearch ? menuSearch.value.toLowerCase().trim() : '';
+    const activeCategory = document.querySelector('.menu-cat-btn.active').getAttribute('data-category');
+
+    allMenuItems.forEach(item => {
+      const itemTitle = item.querySelector('h4').textContent.toLowerCase();
+      const itemDesc = item.querySelector('p').textContent.toLowerCase();
+      const itemCat = item.getAttribute('data-category');
+      
+      const matchesSearch = itemTitle.includes(searchTerm) || itemDesc.includes(searchTerm);
+      const matchesCategory = activeCategory === 'all' || itemCat === activeCategory;
+
+      if (matchesSearch && matchesCategory) {
+        item.style.display = 'flex';
+        item.classList.add('reveal-visible');
+      } else {
+        item.style.display = 'none';
+        item.classList.remove('reveal-visible');
+      }
+    });
+
+    // Cleanup empty sections or empty grid state
+    const visibleItems = Array.from(allMenuItems).filter(i => i.style.display !== 'none');
+    if (visibleItems.length === 0) {
+      // Could show a 'No items found' message here if desired
+    }
+  }
+
+  // Tab Filtering logic
+  menuTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Animation sequence
+      menuGrid.classList.add('switching');
+      
+      setTimeout(() => {
+        menuTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        filterMenu();
+        
+        // Reset animation
+        menuGrid.classList.remove('switching');
+        
+        // Mobile: Scroll tab into view if overflowing
+        tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }, 300);
+    });
+  });
+
+  // Search logic
+  if (menuSearch) {
+    menuSearch.addEventListener('input', filterMenu);
+  }
+
+  // === MENU CINEMATIC HOVER REVEAL ===
+  const menuBg = document.querySelector('.menu-cinematic-bg');
+  const menuSection = document.querySelector('.menu-section');
+  
+  // Mapping categories to high-res images
+  const categoryImages = {
+    'dumplings': 'images/slide 1.jpg',
+    'sushi': 'images/slide 2.jpg',
+    'korean-sushi': 'images/slide. 3.jpg',
+    'default': 'images/slide 1.jpg'
+  };
+
+  allMenuItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const cat = item.getAttribute('data-category');
+      const imgPath = categoryImages[cat] || categoryImages['default'];
+      if (menuBg) {
+        menuBg.style.backgroundImage = `url('${imgPath}')`;
+        menuBg.style.opacity = '0.15';
+        if (menuSection) menuSection.classList.add('hover-active');
+      }
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      if (menuBg) menuBg.style.opacity = '0';
+      if (menuSection) menuSection.classList.remove('hover-active');
+    });
+  });
+
+  // === LIVE INSTAGRAM FEED PARSER ===
+  async function loadInstagramFeed() {
+    const grid = document.querySelector('.insta-grid');
+    if (!grid) return;
+    
+    try {
+      // Bypassing brutal CORS/Graph blocks securely via proxy
+      const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.instagram.com/wasabeekolkata/?__a=1&__d=dis'));
+      const data = await response.json();
+      const igData = JSON.parse(data.contents);
+      
+      const user = igData.graphql.user;
+      const edges = user.edge_owner_to_timeline_media.edges.slice(0, 4);
+      
+      if (edges.length > 0) {
+        grid.innerHTML = ''; // Clear fallback SVGs
+        edges.forEach(edge => {
+          const imgUrl = edge.node.thumbnail_src;
+          const postUrl = `https://www.instagram.com/p/${edge.node.shortcode}/`;
+          grid.innerHTML += `
+            <a href="${postUrl}" target="_blank" class="insta-item">
+              <img src="${imgUrl}" alt="Wasabee Instagram Post">
+              <div class="insta-overlay"><svg viewBox="0 0 24 24" width="32" height="32" fill="#FAF7F2"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+            </a>
+          `;
+        });
+      }
+    } catch(err) {
+      console.log('Instagram strict token blockage intercepted the fetch. Retaining high-end placeholders.');
+    }
+  }
+  
+  loadInstagramFeed();
 
 });
 
@@ -402,3 +528,137 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// === WEBGL SAKURA ANIMATION ===
+function initWebGL() {
+  const canvas = document.getElementById('webgl-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  const scene = new THREE.Scene();
+  
+  // Camera setup
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // Particles (Sakura Petals)
+  const particlesGeometry = new THREE.BufferGeometry();
+  const particlesCount = 200; // Optimal density for luxury feel
+  
+  const posArray = new Float32Array(particlesCount * 3);
+  const rotArray = new Float32Array(particlesCount * 3);
+  const randomArray = new Float32Array(particlesCount);
+
+  for(let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 15; // Spread
+    rotArray[i] = Math.random() * Math.PI;
+  }
+  
+  for(let i = 0; i < particlesCount; i++) {
+    randomArray[i] = Math.random();
+  }
+
+  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+  particlesGeometry.setAttribute('aRotation', new THREE.BufferAttribute(rotArray, 3));
+  particlesGeometry.setAttribute('aRandom', new THREE.BufferAttribute(randomArray, 1));
+
+  // Custom Sakura Shader Material for perfect curves and brand color matching
+  const particleMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime: { value: 0 },
+      uColor: { value: new THREE.Color('#7B2252') } // Fixed to exact brand hex
+    },
+    vertexShader: `
+      attribute float aRandom;
+      attribute vec3 aRotation;
+      varying vec2 vUv;
+      uniform float uTime;
+      
+      void main() {
+        vUv = uv;
+        vec3 pos = position;
+        
+        // Gentle organic falling motion
+        pos.y -= int(uTime * 0.5 * aRandom) % 15; 
+        if(pos.y < -7.0) pos.y += 15.0; // Reset height
+        
+        pos.x += sin(uTime * aRandom + pos.y) * 0.5;
+        pos.z += cos(uTime * aRandom + pos.x) * 0.5;
+
+        vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+        
+        // Size variation
+        gl_PointSize = (12.0 * aRandom + 8.0) * (1.0 / - mvPosition.z);
+        gl_Position = projectionMatrix * mvPosition;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 uColor;
+      void main() {
+        // Soft petal shape using distance fields
+        vec2 xy = gl_PointCoord.xy - vec2(0.5);
+        float r = length(xy);
+        if (r > 0.5) discard;
+        
+        // Soft glowing edge
+        float alpha = 1.0 - smoothstep(0.3, 0.5, r);
+        gl_FragColor = vec4(uColor, alpha * 0.8);
+      }
+    `,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.NormalBlending
+  });
+
+  const particlesMesh = new THREE.Points(particlesGeometry, particleMaterial);
+  scene.add(particlesMesh);
+
+  // Resize handler
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Mouse interaction
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  const windowHalfX = window.innerWidth / 2;
+  const windowHalfY = window.innerHeight / 2;
+
+  document.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX - windowHalfX) * 0.0005;
+    mouseY = (event.clientY - windowHalfY) * 0.0005;
+  });
+
+  // Animation Loop
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const elapsedTime = clock.getElapsedTime();
+
+    particleMaterial.uniforms.uTime.value = elapsedTime;
+
+    // Smooth camera drift based on mouse
+    targetX = mouseX * 0.5;
+    targetY = mouseY * 0.5;
+    
+    // Smooth interpolation
+    camera.position.x += (targetX - camera.position.x) * 0.05;
+    camera.position.y += (-targetY - camera.position.y) * 0.05;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+}
+
+// Call initWebGL
+initWebGL();
