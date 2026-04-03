@@ -620,7 +620,6 @@ button {
 .hero-bg img.active {
   opacity: 1;
   animation-play-state: running;
-  will-change: opacity, transform;
 }
 
 @keyframes heroSlideshow {
