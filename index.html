@@ -35,12 +35,13 @@
   <canvas id="webgl-canvas"></canvas>
 
   <!-- Cinematic Elements -->
-  <div class="scroll-progress"></div>
 
   <!-- Navigation -->
   <nav class="nav" id="navbar">
+    <span class="nav-kanji-left" aria-hidden="true">美</span>
     <a href="#" class="nav-logo" aria-label="Wasabee Home">
       <img src="images/brand identity and logo .JPG" alt="Wasabee" class="nav-logo-img" id="navLogoImg">
+      <span class="brand-tagline">A Unit of Superb Recipes</span>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -50,6 +51,7 @@
       <li><a href="#contact">Access</a></li>
       <li><a href="#reservation" class="cta-btn nav-cta">Reserve</a></li>
     </ul>
+    <span class="nav-kanji-right" aria-hidden="true">味</span>
     <div class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </div>
@@ -75,38 +77,29 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="hero-bg">
-      <img src="images/IMG_2819.jpg" alt="Wasabee Food Item" class="slide slide-1">
-      <img src="images/IMG_2820.jpg" alt="Wasabee Food Item" class="slide slide-2">
-      <img src="images/IMG_2821.jpg" alt="Wasabee Food Item" class="slide slide-3">
-      <img src="images/IMG_2822.jpg" alt="Wasabee Food Item" class="slide slide-4">
-      <img src="images/IMG_2823.jpg" alt="Wasabee Food Item" class="slide slide-5">
-      <img src="images/IMG_2824.jpg" alt="Wasabee Food Item" class="slide slide-6">
-      <img src="images/IMG_2825.jpg" alt="Wasabee Food Item" class="slide slide-7">
-      <img src="images/IMG_2826.jpg" alt="Wasabee Food Item" class="slide slide-8">
-      <img src="images/IMG_2827.jpg" alt="Wasabee Food Item" class="slide slide-9">
-      <img src="images/IMG_2828.jpg" alt="Wasabee Food Item" class="slide slide-10">
-      <img src="images/IMG_2829.jpg" alt="Wasabee Food Item" class="slide slide-11">
+    <div class="hero-bg" style="background-color: var(--color-bg);">
     </div>
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" style="background: transparent;"></div>
 
     <!-- Floating Sakura Petals -->
     <div class="sakura-container" id="sakuraContainer" aria-hidden="true"></div>
 
     <!-- Vertical Japanese text on sides -->
-    <div class="hero-vertical-jp hero-vertical-left" aria-hidden="true">東洋の味覚</div>
-    <div class="hero-vertical-jp hero-vertical-right" aria-hidden="true">わさびー</div>
 
     <div class="hero-content">
-      <div class="hero-scroll-text">WASABEE</div>
-      
-      <div class="hero-logo-composition">
-        <div class="hero-jp-overlay-left">本格的</div>
-        <div class="hero-logo-inner">
-          <img src="images/brand identity and logo .JPG" alt="Wasabee Oriental Cuisine" class="hero-logo-img" id="heroLogoImg">
-          <p class="hero-address">30, Baidyapara, Sahid Nagar, Near Besides Union Bank, Arya Vidyalaya Road, Kalikapur, Kolkata</p>
+      <div class="hero-graphic-frame reveal">
+        <div class="hero-graphic-watermark watermark-br" aria-hidden="true">和さび</div>
+        <div class="hero-graphic-watermark watermark-tl" aria-hidden="true">和さび</div>
+        
+        <!-- Postcard Mounting Tapes -->
+        <div class="hero-tape tape-tr" aria-hidden="true"></div>
+        <div class="hero-tape tape-bl" aria-hidden="true"></div>
+        
+        <div class="hero-graphic-container">
+          <img src="images/graphic 5.jpg" alt="Wasabee Oriental Cuisine" class="hero-logo-img-enlarged" id="heroLogoImg">
+          <div class="hero-graphic-overlay"></div>
         </div>
-        <div class="hero-jp-overlay-right">手造り</div>
+        <p class="hero-address-refined">30, Baidyapara, Sahid Nagar, Near Besides Union Bank, Arya Vidyalaya Road, Kalikapur, Kolkata</p>
       </div>
     </div>
 
@@ -144,7 +137,7 @@
       <div class="about-grid">
         <div class="about-image reveal-left">
           <div class="img-reveal">
-            <img src="images/doodle wasabee.PNG" alt="Wasabee Doodle Art" class="main-img">
+            <img src="images/graphic 4.jpg" alt="Wasabee Brand Artwork" class="main-img">
           </div>
           <div class="accent-border"></div>
           <span class="jp-accent">和さび</span>
@@ -192,22 +185,63 @@
     </div>
   </div>
 
-  <!-- Philosophy / Parallax -->
-  <section class="philosophy" id="philosophy">
-    <div class="philosophy-bg" data-parallax="0.3">
-      <img src="images/slide 2.jpg" alt="Wasabee Philosophy">
-    </div>
-    <div class="philosophy-overlay"></div>
-    <!-- Enso Circle -->
-    <div class="enso-circle" aria-hidden="true"></div>
-    <div class="philosophy-content reveal">
-      <blockquote class="philosophy-quote">
-        We don't just serve food. We craft moments. 
-        Every grain of rice, every slice of fish, tells the story 
-        of our dedication to perfection.
-      </blockquote>
-      <p class="philosophy-author">- The Wasabee Kitchen</p>
-      <p class="philosophy-jp" aria-hidden="true">一期一会</p>
+  <!-- ════════ 3-COLUMN: PHILOSOPHY, GRAPHIC & ORDER ════════ -->
+  <section class="philosophy-order-combined" id="philosophy" style="background: var(--color-bg); padding: 1.5rem 1rem;">
+    <div class="split-section-grid-3col" style="max-width: 1600px; margin: 0 auto; align-items: stretch;">
+      
+      <!-- Left: Philosophy Art Card -->
+      <div class="philosophy-col reveal-left" style="height: 100%;">
+        <div class="philosophy-frame" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+          <div class="enso-circle" aria-hidden="true"></div>
+          <div class="philosophy-content">
+            <blockquote class="philosophy-quote">
+              We don't just serve food. We craft moments.
+              Every grain of rice, every slice of fish, tells the story
+              of our dedication to perfection.
+            </blockquote>
+            <p class="philosophy-author">- The Wasabee Kitchen</p>
+          </div>
+          <p class="philosophy-jp" aria-hidden="true">一期一会</p>
+        </div>
+      </div>
+
+      <!-- Middle: Graphic Cat -->
+      <div class="reveal-up" style="height: 100%; display: flex; flex-direction: column;">
+        <div class="side-graphic-container" style="width: 100%; height: 100%; min-height: unset; margin: 0; padding: 0;">
+          <img src="images/graphic 3.jpg" alt="Order Wasabee" class="side-graphic-img">
+        </div>
+      </div>
+
+      <!-- Right: Order Platforms -->
+      <div class="order-platforms-col reveal-right" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 2rem;">
+        <div>
+          <span class="section-label">オンライン注文</span>
+          <h2 class="section-title">Order <span class="accent">Online</span></h2>
+          <p class="section-text" style="text-align:left; color: var(--color-brand); font-weight: 500; font-size: 1rem; margin-bottom: 0;">
+            Can't make it to us? We'll come to you. Experience gourmet Wasabee at home.
+          </p>
+        </div>
+        <div style="display: flex; flex-direction: row; gap: 1rem; flex-wrap: wrap;">
+          <!-- Zomato -->
+          <a href="http://zoma.to/r/22188" target="_blank" style="flex: 1; min-width: 120px; display: flex; align-items: center; justify-content: center; gap: 0.75rem; border: 1px solid var(--color-brand); padding: 1rem; color: var(--color-brand); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;">
+            <img src="images/zomato-1.svg" alt="Zomato" height="20">
+            Zomato
+          </a>
+          <!-- Swiggy -->
+          <a href="https://www.swiggy.com/city/kolkata/wasabee-kalikapur-ruby-area-rest33209" target="_blank" style="flex: 1; min-width: 120px; display: flex; align-items: center; justify-content: center; gap: 0.75rem; border: 1px solid var(--color-brand); padding: 1rem; color: var(--color-brand); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;">
+            <img src="images/swiggy-1.svg" alt="Swiggy" height="20">
+            Swiggy
+          </a>
+        </div>
+        <div style="margin-top: 1rem; display: flex;">
+          <!-- Google Maps -->
+          <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.75rem; border: 1px solid rgba(123, 34, 82, 0.4); padding: 1rem; color: var(--color-brand); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; background: rgba(123, 34, 82, 0.03);">
+            <img src="images/google-maps-2020-icon.svg" alt="Google Maps" height="18">
+            View on Google Maps
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -218,7 +252,7 @@
   <!-- MENU SECTION Complete Wasabee Menu      -->
   <!-- ══════════════════════════════════════════ -->
   <section class="section menu-section" id="menu">
-    <div class="menu-cinematic-bg"></div>
+        <div class="menu-cinematic-bg"></div>
     <div class="menu-cinematic-overlay"></div>
     <div class="section-narrow">
       <div class="menu-header reveal">
@@ -736,27 +770,83 @@
         </div>
       </div>
     </div>
-  </section>
+      </section>
 
   <!-- Gallery Section -->
   <section class="gallery" id="gallery">
+    <!-- Japanese Art Cliches -->
+    <div class="cliche-hinomaru" aria-hidden="true"></div>
+    <div class="cliche-seigaiha" aria-hidden="true"></div>
+    <div class="cliche-tanzaku" aria-hidden="true">芸術</div>
+    
     <span class="section-kanji-bg" aria-hidden="true">美</span>
     <div class="gallery-header reveal">
       <span class="section-label">ギャラリー</span>
-      <h2 class="section-title">The <span class="accent">Gallery</span></h2>
+      <h2 class="section-title">The <span class="accent">Gallery</span><span class="cliche-hanko" aria-hidden="true">和</span></h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item tall reveal-scale"><img src="images/IMG_2819.jpg" alt="Signature Appetizers"><div class="gallery-item-overlay"><span>Signature Appetizers</span></div></div>
-      <div class="gallery-item reveal-scale" data-delay="0.1"><img src="images/IMG_2820.jpg" alt="Fresh Nigiri Selection"><div class="gallery-item-overlay"><span>Fresh Nigiri</span></div></div>
-      <div class="gallery-item reveal-scale" data-delay="0.2"><img src="images/IMG_2821.jpg" alt="The Wasabee Platter"><div class="gallery-item-overlay"><span>The Wasabee Platter</span></div></div>
-      <div class="gallery-item wide reveal-scale" data-delay="0.3"><img src="images/IMG_2822.jpg" alt="Authentic Dumplings"><div class="gallery-item-overlay"><span>Handcrafted Dumplings</span></div></div>
-      <div class="gallery-item reveal-scale" data-delay="0.1"><img src="images/IMG_2823.jpg" alt="Korean Classics"><div class="gallery-item-overlay"><span>Korean Heritage</span></div></div>
-      <div class="gallery-item tall reveal-scale" data-delay="0.2"><img src="images/IMG_2824.jpg" alt="Hand-Rolled Perfection"><div class="gallery-item-overlay"><span>Sushi Art</span></div></div>
-      <div class="gallery-item reveal-scale" data-delay="0.3"><img src="images/IMG_2825.jpg" alt="Pan-Asian Fusion"><div class="gallery-item-overlay"><span>Asian Fusion</span></div></div>
-      <div class="gallery-item wide reveal-scale" data-delay="0.1"><img src="images/IMG_2826.jpg" alt="Culinary Artistry"><div class="gallery-item-overlay"><span>Culinary Artistry</span></div></div>
-      <div class="gallery-item reveal-scale" data-delay="0.2"><img src="images/IMG_2827.jpg" alt="Savory Dim Sum"><div class="gallery-item-overlay"><span>Gourmet Dim Sum</span></div></div>
-      <div class="gallery-item reveal-scale" data-delay="0.3"><img src="images/IMG_2828.jpg" alt="Traditional Ramen"><div class="gallery-item-overlay"><span>Traditional Ramen</span></div></div>
-      <div class="gallery-item reveal-scale" data-delay="0.4"><img src="images/IMG_2829.jpg" alt="Gourmet Sushi Rolls"><div class="gallery-item-overlay"><span>Premium Rolls</span></div></div>
+      <!-- Row 1 -->
+      <div class="gallery-item span-4 reveal-scale">
+        <div class="gallery-plate">PLATE<span>図 01</span></div>
+        <img src="images/IMG_2819.jpg" alt="Signature Appetizers">
+        <div class="gallery-item-overlay"><span>Signature Appetizers</span></div>
+      </div>
+      <div class="gallery-item span-3 stagger-down reveal-scale" data-delay="0.1">
+        <div class="gallery-plate">PLATE<span>図 02</span></div>
+        <img src="images/IMG_2820.jpg" alt="Fresh Nigiri Selection">
+        <div class="gallery-item-overlay"><span>Fresh Nigiri</span></div>
+      </div>
+      <div class="gallery-item span-5 reveal-scale" data-delay="0.2">
+        <div class="gallery-plate">PLATE<span>図 03</span></div>
+        <img src="images/IMG_2821.jpg" alt="The Wasabee Platter">
+        <div class="gallery-item-overlay"><span>The Wasabee Platter</span></div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="gallery-item span-6 reveal-scale" data-delay="0.3">
+        <div class="gallery-plate">PLATE<span>図 04</span></div>
+        <img src="images/IMG_2822.jpg" alt="Authentic Dumplings">
+        <div class="gallery-item-overlay"><span>Handcrafted Dumplings</span></div>
+      </div>
+      <div class="gallery-item span-3 stagger-up reveal-scale" data-delay="0.1">
+        <div class="gallery-plate">PLATE<span>図 05</span></div>
+        <img src="images/IMG_2823.jpg" alt="Korean Classics">
+        <div class="gallery-item-overlay"><span>Korean Heritage</span></div>
+      </div>
+      <div class="gallery-item span-3 reveal-scale" data-delay="0.2">
+        <div class="gallery-plate">PLATE<span>図 06</span></div>
+        <img src="images/IMG_2824.jpg" alt="Hand-Rolled Perfection">
+        <div class="gallery-item-overlay"><span>Sushi Art</span></div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="gallery-item span-3 reveal-scale" data-delay="0.3">
+        <div class="gallery-plate">PLATE<span>図 07</span></div>
+        <img src="images/IMG_2825.jpg" alt="Pan-Asian Fusion">
+        <div class="gallery-item-overlay"><span>Asian Fusion</span></div>
+      </div>
+      <div class="gallery-item span-6 stagger-down reveal-scale" data-delay="0.1">
+        <div class="gallery-plate">PLATE<span>図 08</span></div>
+        <img src="images/IMG_2826.jpg" alt="Culinary Artistry">
+        <div class="gallery-item-overlay"><span>Culinary Artistry</span></div>
+      </div>
+      <div class="gallery-item span-3 reveal-scale" data-delay="0.2">
+        <div class="gallery-plate">PLATE<span>図 09</span></div>
+        <img src="images/IMG_2827.jpg" alt="Savory Dim Sum">
+        <div class="gallery-item-overlay"><span>Gourmet Dim Sum</span></div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="gallery-item span-5 reveal-scale" data-delay="0.3">
+        <div class="gallery-plate">PLATE<span>図 10</span></div>
+        <img src="images/IMG_2828.jpg" alt="Traditional Ramen">
+        <div class="gallery-item-overlay"><span>Traditional Ramen</span></div>
+      </div>
+      <div class="gallery-item span-7 stagger-up reveal-scale" data-delay="0.4">
+        <div class="gallery-plate">PLATE<span>図 11</span></div>
+        <img src="images/IMG_2829.jpg" alt="Gourmet Sushi Rolls">
+        <div class="gallery-item-overlay"><span>Premium Rolls</span></div>
+      </div>
     </div>
   </section>
 
@@ -772,45 +862,22 @@
       </div>
       <div class="features-grid">
         <div class="feature-card reveal" data-delay="0"><div class="feature-card-img"><img src="images/slide 2.jpg" alt="Tradition"></div><div class="feature-card-content"><div class="card-label">Our Tradition</div><h3>Philosophy &amp; Craft</h3><p>Rooted in centuries-old culinary arts from Japan, Korea, Thailand &amp; China.</p></div><div class="feature-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div></div>
-        <div class="feature-card reveal" data-delay="0.15"><div class="feature-card-img"><img src="images/slide. 3.jpg" alt="Menu"></div><div class="feature-card-content"><div class="card-label">100+ Dishes</div><h3>Taste of Asia</h3><p>From Japanese sushi to Korean bibimbap, Thai curries to Chinese classics.</p></div><div class="feature-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div></div>
+        <div class="feature-card reveal" data-delay="0.15">
+          <a href="#menu" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+            <div class="feature-card-img"><img src="images/taste of asia.jpg" alt="Taste of Asia"></div>
+            <div class="feature-card-content">
+              <div class="card-label">100+ Dishes</div>
+              <h3>Taste of Asia</h3>
+              <p>From Japanese sushi to Korean bibimbap, Thai curries to Chinese classics.</p>
+            </div>
+            <div class="feature-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+          </a>
+        </div>
         <div class="feature-card reveal" data-delay="0.3"><div class="feature-card-img"><img src="images/slide 2.jpg" alt="Ambiance"></div><div class="feature-card-content"><div class="card-label">2 Locations</div><h3>Bypass &amp; Deshapriya Park</h3><p>Premium Oriental dining across two neighborhoods in Kolkata.</p></div><div class="feature-card-arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Order Online Section -->
-  <section class="section order-section" id="order">
-    <div class="section-narrow">
-      <div class="reveal" style="text-align:center; margin-bottom:3rem;">
-        <span class="section-label" style="justify-content:center;">オンライン注文</span>
-        <h2 class="section-title">Order <span class="accent">Online</span></h2>
-        <p class="section-text" style="max-width:100%; text-align:center; margin:0 auto;">Can't make it to us? We'll come to you.</p>
-      </div>
-      <div class="order-platforms reveal">
-        <a href="http://zoma.to/r/22188" target="_blank" class="platform-card zomato-card">
-          <div class="platform-icon">
-            <img src="images/zomato-1.svg" alt="Zomato" height="32">
-            <span style="font-size:1.5rem; font-weight:800; color:#e23744; margin-left:0.5rem; letter-spacing:0.02em;">zomato</span>
-          </div>
-          <div class="platform-info"><div class="platform-rating"><svg viewBox="0 0 24 24" width="16" height="16" fill="#FFD700"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>4.2</span></div><span class="platform-cta">Order Now →</span></div>
-        </a>
-        <a href="https://www.swiggy.com/city/kolkata/wasabee-kalikapur-ruby-area-rest33209" target="_blank" class="platform-card swiggy-card">
-          <div class="platform-icon">
-            <img src="images/swiggy-1.svg" alt="Swiggy" height="38">
-            <span style="font-size:1.5rem; font-weight:800; color:#fc8019; margin-left:0.5rem; letter-spacing:0.02em;">Swiggy</span>
-          </div>
-          <div class="platform-info"><div class="platform-rating"><svg viewBox="0 0 24 24" width="16" height="16" fill="#FFD700"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span>4.3</span></div><span class="platform-cta">Order Now →</span></div>
-        </a>
-        <a href="https://share.google/Fpbui7WFzKV8RP00X" target="_blank" class="platform-card google-card">
-          <div class="platform-icon">
-            <img src="images/google-maps-2020-icon.svg" alt="Google Maps" height="36">
-            <span style="font-size:1.4rem; font-weight:800; color:#ffffff; margin-left:0.5rem; letter-spacing:0.02em;">Google Maps</span>
-          </div>
-          <div class="platform-info"><div class="platform-rating"><div class="google-stars"><svg viewBox="0 0 24 24" width="14" height="14" fill="#FFD700"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#FFD700"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#FFD700"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#FFD700"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="#FFD700" opacity="0.4"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><span>4.5 · 500+ reviews</span></div><span class="platform-cta">View on Maps →</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- Live Reviews -->
   <section class="section reviews-section" id="reviews">
@@ -959,13 +1026,20 @@
 
   <!-- Reservation CTA -->
   <section class="reservation" id="reservation">
-    <span class="section-kanji-bg" style="color: var(--color-red);" aria-hidden="true">予</span>
-    <div class="reservation-content reveal">
-      <span class="section-label">ご予約</span>
-      <h2 class="section-title">Reserve Your <span class="accent">Table</span></h2>
-      <p class="section-text">Join us for an unforgettable journey through the flavors of Asia. Book your table today.</p>
-      <p class="reservation-jp-proverb" aria-hidden="true">「おもてなし」: the spirit of selfless hospitality</p>
-      <a href="tel:+919163764444" class="cta-btn">Make a Reservation <svg viewBox="0 0 24 24"><path d="M5 12H19M19 12L12 5M19 12L12 19"/></svg></a>
+    <span class="section-kanji-bg" style="color: var(--color-brand); opacity: 0.1;" aria-hidden="true">予</span>
+    <div class="section-narrow">
+      <div class="split-section-grid">
+        <div class="reservation-content reveal-left">
+          <span class="section-label">ご予約</span>
+          <h2 class="section-title">Reserve Your <span class="accent">Table</span></h2>
+          <p class="section-text">Join us for an unforgettable journey through the flavors of Asia. Book your table today.</p>
+          <a href="tel:+919163764444" class="cta-btn">Make a Reservation <svg viewBox="0 0 24 24"><path d="M5 12H19M19 12L12 5M19 12L12 19"/></svg></a>
+        </div>
+        <div class="side-graphic-container reveal-right">
+          <img src="images/graphic 1.jpg" alt="Wasabee Hospitality" class="side-graphic-img">
+          <div class="omotenashi-tag">「おもてなし」</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1025,7 +1099,8 @@
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-logo">
-        <img src="images/brand identity and logo .JPG" alt="Wasabee Logo" style="width:200px; max-width:100%; height:auto; margin-bottom: 1rem; border-radius: 2px;" class="footer-logo-img">
+        <img src="images/brand identity and logo .JPG" alt="Wasabee Logo" style="width:200px; max-width:100%; height:auto; margin-bottom: 0.5rem; border-radius: 2px;" class="footer-logo-img">
+        <div class="brand-tagline" style="color: var(--color-brand); opacity: 0.9;">A Unit of Superb Recipes</div>
       </div>
       <div class="footer-nav">
         <div class="footer-nav-col"><h5>Explore</h5><ul><li><a href="#about">About</a></li><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#features">Experience</a></li></ul></div>

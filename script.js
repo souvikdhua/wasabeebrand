@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (theme === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
       if (navLogoImg) navLogoImg.src = 'images/brand identity and logo .JPG';
-      if (heroLogoImg) heroLogoImg.src = 'images/brand identity and logo .JPG';
+      if (heroLogoImg) heroLogoImg.src = 'images/graphic 5.jpg';
     } else {
       document.documentElement.removeAttribute('data-theme');
       if (navLogoImg) navLogoImg.src = 'images/brand identity and logo .JPG';
-      if (heroLogoImg) heroLogoImg.src = 'images/brand identity and logo .JPG';
+      if (heroLogoImg) heroLogoImg.src = 'images/graphic 5.jpg';
     }
   }
 
@@ -61,6 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Scroll Detection for Waveline
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      nav.classList.add('nav--scrolled');
+    } else {
+      nav.classList.remove('nav--scrolled');
+    }
+  });
   
   // Close overlay on link click
   menuLinks.forEach(link => {
@@ -269,28 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // === MENU CATEGORY FILTER ===
-  const menuCatBtns = document.querySelectorAll('.menu-cat-btn');
-  const menuItems = document.querySelectorAll('.menu-item');
-  
-  menuCatBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove active from all
-      menuCatBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      
-      const category = btn.dataset.category;
-      
-      menuItems.forEach(item => {
-        if (category === 'all' || item.dataset.category === category) {
-          item.style.display = 'flex';
-          item.style.animation = 'fadeInUp 0.5s ease forwards';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
+  // Menu category filtering handled by Advanced Menu System below
 
   // === MARQUEE DUPLICATE ===
   const marqueeTracks = document.querySelectorAll('.marquee-track');
@@ -346,35 +334,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // === HERO BACKGROUND SLIDER (JS CONTROLLED) ===
-  const heroSlides = document.querySelectorAll('#hero .hero-bg img');
-  let currentSlide = 0;
-  
-  function nextSlide() {
-    if (heroSlides.length === 0) return;
-    
-    heroSlides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % heroSlides.length;
-    heroSlides[currentSlide].classList.add('active');
-  }
-
-  if (heroSlides.length > 0) {
-    heroSlides[0].classList.add('active'); // First image active
-    setInterval(nextSlide, 5000); // Luxury 5s interval for food photography
+  // === HERO BACKGROUND REVEAL (STATIC) ===
+  const heroSlide = document.querySelector('#hero .hero-bg img');
+  if (heroSlide) {
+    heroSlide.classList.add('active');
   }
 
   // === BRANDING SCROLL MOTION ===
   const heroScrollText = document.querySelector('.hero-scroll-text');
-  const scrollProgress = document.querySelector('.scroll-progress');
-  
   function updateBrandingScroll() {
     const scrollY = window.scrollY;
-    
-    // Update scroll progress bar
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (scrollProgress && totalHeight > 0) {
-      scrollProgress.style.width = `${(scrollY / totalHeight) * 100}%`;
-    }
     
     // Parallax branding text: slides left as user scrolls down
     if (heroScrollText) {
@@ -448,8 +417,10 @@ document.addEventListener('DOMContentLoaded', () => {
     menuSearch.addEventListener('input', filterMenu);
   }
 
-  // Ensure food menu is visible on initial load
-  filterMenu();
+  // Initialize menu on page load — ensure all items are visible
+  if (allMenuItems.length > 0) {
+    filterMenu();
+  }
 
   // === MENU CINEMATIC HOVER REVEAL ===
   const menuBg = document.querySelector('.menu-cinematic-bg');
@@ -537,130 +508,95 @@ function initWebGL() {
   const canvas = document.getElementById('webgl-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
-  const scene = new THREE.Scene();
-  
-  // Camera setup
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 5;
-
-  const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  // Particles (Sakura Petals)
-  const particlesGeometry = new THREE.BufferGeometry();
-  const particlesCount = 200; // Optimal density for luxury feel
-  
-  const posArray = new Float32Array(particlesCount * 3);
-  const rotArray = new Float32Array(particlesCount * 3);
-  const randomArray = new Float32Array(particlesCount);
-
-  for(let i = 0; i < particlesCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 15; // Spread
-    rotArray[i] = Math.random() * Math.PI;
-  }
-  
-  for(let i = 0; i < particlesCount; i++) {
-    randomArray[i] = Math.random();
-  }
-
-  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-  particlesGeometry.setAttribute('aRotation', new THREE.BufferAttribute(rotArray, 3));
-  particlesGeometry.setAttribute('aRandom', new THREE.BufferAttribute(randomArray, 1));
-
-  // Custom Sakura Shader Material for perfect curves and brand color matching
-  const particleMaterial = new THREE.ShaderMaterial({
-    uniforms: {
-      uTime: { value: 0 },
-      uColor: { value: new THREE.Color('#7B2252') } // Fixed to exact brand hex
-    },
-    vertexShader: `
-      attribute float aRandom;
-      attribute vec3 aRotation;
-      varying vec2 vUv;
-      uniform float uTime;
-      
-      void main() {
-        vUv = uv;
-        vec3 pos = position;
-        
-        // Gentle organic falling motion
-        pos.y -= int(uTime * 0.5 * aRandom) % 15; 
-        if(pos.y < -7.0) pos.y += 15.0; // Reset height
-        
-        pos.x += sin(uTime * aRandom + pos.y) * 0.5;
-        pos.z += cos(uTime * aRandom + pos.x) * 0.5;
-
-        vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-        
-        // Size variation
-        gl_PointSize = (12.0 * aRandom + 8.0) * (1.0 / - mvPosition.z);
-        gl_Position = projectionMatrix * mvPosition;
-      }
-    `,
-    fragmentShader: `
-      uniform vec3 uColor;
-      void main() {
-        // Soft petal shape using distance fields
-        vec2 xy = gl_PointCoord.xy - vec2(0.5);
-        float r = length(xy);
-        if (r > 0.5) discard;
-        
-        // Soft glowing edge
-        float alpha = 1.0 - smoothstep(0.3, 0.5, r);
-        gl_FragColor = vec4(uColor, alpha * 0.8);
-      }
-    `,
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.NormalBlending
-  });
-
-  const particlesMesh = new THREE.Points(particlesGeometry, particleMaterial);
-  scene.add(particlesMesh);
-
-  // Resize handler
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-
-  // Mouse interaction
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetX = 0;
-  let targetY = 0;
-  const windowHalfX = window.innerWidth / 2;
-  const windowHalfY = window.innerHeight / 2;
-
-  document.addEventListener('mousemove', (event) => {
-    mouseX = (event.clientX - windowHalfX) * 0.0005;
-    mouseY = (event.clientY - windowHalfY) * 0.0005;
-  });
-
-  // Animation Loop
-  const clock = new THREE.Clock();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    const elapsedTime = clock.getElapsedTime();
-
-    particleMaterial.uniforms.uTime.value = elapsedTime;
-
-    // Smooth camera drift based on mouse
-    targetX = mouseX * 0.5;
-    targetY = mouseY * 0.5;
+  try {
+    const scene = new THREE.Scene();
     
-    // Smooth interpolation
-    camera.position.x += (targetX - camera.position.x) * 0.05;
-    camera.position.y += (-targetY - camera.position.y) * 0.05;
-    camera.lookAt(scene.position);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
 
-    renderer.render(scene, camera);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 200;
+    
+    const posArray = new Float32Array(particlesCount * 3);
+    const randomArray = new Float32Array(particlesCount);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 15;
+    }
+    for (let i = 0; i < particlesCount; i++) {
+      randomArray[i] = Math.random();
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute('aRandom', new THREE.BufferAttribute(randomArray, 1));
+
+    // Use a simple PointsMaterial instead of ShaderMaterial to avoid WebGL errors
+    const particleMaterial = new THREE.PointsMaterial({
+      color: new THREE.Color('#7B2252'),
+      size: 0.08,
+      transparent: true,
+      opacity: 0.5,
+      depthWrite: false,
+      blending: THREE.NormalBlending
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, particleMaterial);
+    scene.add(particlesMesh);
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    let mouseX = 0;
+    let mouseY = 0;
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    document.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX - windowHalfX) * 0.0005;
+      mouseY = (event.clientY - windowHalfY) * 0.0005;
+    });
+
+    const clock = new THREE.Clock();
+    const positions = particlesGeometry.attributes.position.array;
+    const randoms = particlesGeometry.attributes.aRandom.array;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      // Animate particle positions for falling effect
+      for (let i = 0; i < particlesCount; i++) {
+        const ix = i * 3;
+        const iy = i * 3 + 1;
+        const r = randoms[i];
+        positions[iy] -= r * 0.008 + 0.003;
+        if (positions[iy] < -7.5) positions[iy] = 7.5;
+        positions[ix] += Math.sin(elapsedTime * r + positions[iy]) * 0.003;
+      }
+      particlesGeometry.attributes.position.needsUpdate = true;
+
+      // Smooth camera drift
+      camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  } catch (e) {
+    // WebGL not supported or failed - gracefully degrade
+    console.log('WebGL particle effect unavailable, continuing without it.');
+    const canvas = document.getElementById('webgl-canvas');
+    if (canvas) canvas.style.display = 'none';
   }
-
-  animate();
 }
 
 // Call initWebGL
